@@ -5,8 +5,9 @@ biome     := NODE_NO_WARNINGS=1 npx --yes @biomejs/biome@2.4.2 check --config-pa
 format: .git/hooks/pre-commit .format-web
 
 .format-web: .biome.json $(web-files)
-	./cache-bust update
 	$(biome) --write $(web-files)
+	./cache-bust update
+	$(biome) --write index.html
 	@touch $@
 
 .PHONY: test
