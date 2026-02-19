@@ -3,13 +3,13 @@
 }
 
 .buglist-container.closed .buglist-header .toggle::after {
-    content: "▶";
     font-size: 75%;
+    content: "▶";
 }
 
 .buglist-container:not(.closed) .buglist-header .toggle::after {
-    content: "▼";
     font-size: 75%;
+    content: "▼";
 }
 
 .buglist-container.no-bugs:not(.lazy) .toggle,
@@ -26,8 +26,8 @@
 }
 
 .buglist-group-actions {
-    font-size: 14px;
     margin-bottom: 1px;
+    font-size: 14px;
     text-align: right;
     white-space: nowrap;
 }
@@ -41,20 +41,20 @@
 }
 
 .buglist-header {
+    display: flex;
+    gap: 8px;
+    font-weight: bold;
+    color: #28292a;
+    cursor: pointer;
     background: #eee;
     border: 1px solid #28292a;
     border-radius: 4px;
-    color: #28292a;
-    cursor: pointer;
-    display: flex;
-    font-weight: bold;
-    gap: 8px;
 }
 
 .buglist-container:not(.closed) .buglist-header {
     border-bottom: none;
-    border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .buglist-header:hover {
@@ -63,8 +63,8 @@
 
 .buglist-container .actions button,
 .buglist-container .actions .info {
-    font-size: 22px;
     padding: 2px 4px;
+    font-size: 22px;
 }
 
 .buglist-container .actions .info {
@@ -80,9 +80,9 @@
 }
 
 .buglist-header > div {
-    margin-bottom: auto;
-    margin-top: auto;
     padding: 8px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .buglist-header .toggle {
@@ -120,16 +120,16 @@
 }
 
 .buglist-loading {
+    padding: 8px;
+    font-style: italic;
     border: 1px solid #28292a;
     border-top: none;
-    font-style: italic;
-    padding: 8px;
 }
 
 .buglist {
-    border: 1px solid #28292a;
-    border-collapse: collapse;
     border-spacing: 0;
+    border-collapse: collapse;
+    border: 1px solid #28292a;
     border-top: none;
 }
 
@@ -191,16 +191,16 @@
 }
 
 .bug-row.bug-meta td {
-    color: #777;
-    font-size: 13px;
     padding-bottom: 8px;
+    font-size: 13px;
     vertical-align: top;
+    color: #777;
     white-space: nowrap;
 }
 
 .bug-row.bug-meta td.keywords {
-    white-space: normal;
     width: 100%;
+    white-space: normal;
 }
 
 .bug-row .bug-id {
@@ -208,9 +208,9 @@
 }
 
 .bug-row .bug-summary {
-    color: #000;
     font-size: 15px;
     font-weight: 500;
+    color: #000;
     overflow-wrap: anywhere;
 }
 
@@ -227,8 +227,8 @@
 }
 
 .bug-row .component {
-    padding-left: 32px;
     padding-right: 32px;
+    padding-left: 32px;
 }
 
 .bug-row .keyword-sec-critical,

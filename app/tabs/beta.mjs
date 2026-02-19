@@ -1,6 +1,6 @@
-import { _ } from "util";
 import * as BugList from "buglist";
 import * as Beta from "buglists/beta";
+import { _ } from "util";
 
 export function initUI() {
     const $content = _("#beta-content");

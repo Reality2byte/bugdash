@@ -3,8 +3,8 @@
 }
 
 #selected-components-warning {
-    color: orange;
     vertical-align: middle;
+    color: orange;
 }
 
 body:not(.component-warning) #selected-components-warning {
@@ -21,8 +21,8 @@ body:not(.component-warning) #selected-components-warning {
 }
 
 #component-filter.disabled {
-    background: #f8f8f8;
     color: #bbb;
+    background: #f8f8f8;
 }
 
 label[for="filter-selected"].disabled {
@@ -30,17 +30,17 @@ label[for="filter-selected"].disabled {
 }
 
 #components {
-    border-collapse: collapse;
-    margin-top: 8px;
     width: 100%;
+    margin-top: 8px;
+    border-collapse: collapse;
 }
 
 #components th,
 #components td {
-    border-bottom: 1px solid #aaa;
     padding: 8px 5px;
-    text-align: left;
     vertical-align: top;
+    text-align: left;
+    border-bottom: 1px solid #aaa;
 }
 
 #components tr.row:hover {

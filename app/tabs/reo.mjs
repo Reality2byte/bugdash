@@ -1,7 +1,7 @@
-import { _ } from "util";
 import * as BugList from "buglist";
 import * as REO from "buglists/reo";
 import * as Global from "global";
+import { _ } from "util";
 
 export function initUI() {
     const $content = _("#reo-content");

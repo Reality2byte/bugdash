@@ -14,19 +14,19 @@
 }
 
 #dialog {
+    position: relative;
+    box-sizing: border-box;
+    width: 85vw;
+    max-width: 30em;
+    overflow: hidden;
     background-color: #fff;
     border-radius: 0.4em;
     box-shadow: 0 0 10px 1px rgb(0 0 0 / 10%);
-    box-sizing: border-box;
-    max-width: 30em;
-    overflow: hidden;
-    position: relative;
-    width: 85vw;
 }
 
 #dialog-message {
-    font-size: 1.6em;
     padding: 15px;
+    font-size: 1.6em;
     text-align: center;
 }
 
@@ -35,10 +35,10 @@
 }
 
 #dialog-input {
-    margin: 4px;
-    padding: 4px;
-    resize: none;
     width: calc(100% - 20px);
+    padding: 4px;
+    margin: 4px;
+    resize: none;
 }
 
 #dialog.dialog-alert #dialog-message {
@@ -66,12 +66,12 @@
 }
 
 .dialog-button {
-    border-top: 1px solid #ebebeb;
-    cursor: pointer;
     flex: 1;
-    font-weight: bold;
     padding: 15px;
+    font-weight: bold;
     text-align: center;
+    cursor: pointer;
+    border-top: 1px solid #ebebeb;
 }
 
 .dialog-button:not(:first-child) {

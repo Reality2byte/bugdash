@@ -1,21 +1,21 @@
 #nav {
-    background: #28292a;
     display: flex;
     padding-top: 2px;
     user-select: none;
+    background: #28292a;
 }
 
 #nav .nav-button {
+    padding: 4px 16px;
+    font-size: 24px;
     color: #fff;
     cursor: pointer;
-    font-size: 24px;
-    padding: 4px 16px;
 }
 
 #nav #username {
-    color: #fff;
-    margin-bottom: auto;
     margin-top: auto;
+    margin-bottom: auto;
+    color: #fff;
 }
 
 #nav #key-button:hover {
@@ -45,21 +45,21 @@
 }
 
 .tab {
-    border-bottom: 1px solid #656565;
-    border-top: 1px solid #656565;
-    color: #fff;
-    cursor: pointer;
-    font-weight: bold;
     padding: 0.5em 1em;
+    font-weight: bold;
+    color: #fff;
     white-space: nowrap;
+    cursor: pointer;
+    border-top: 1px solid #656565;
+    border-bottom: 1px solid #656565;
 }
 
 .tab.filler {
-    border: none;
-    cursor: default;
     flex-grow: 1;
-    margin-bottom: auto;
     margin-top: auto;
+    margin-bottom: auto;
+    cursor: default;
+    border: none;
 }
 
 body:not(.global-error) #global-error {
@@ -71,8 +71,8 @@ body:not(.egg) #global-error .egg {
 }
 
 #global-error {
-    color: #fa8072;
     font-size: 12px;
+    color: #fa8072;
 }
 
 #global-error .egg {
@@ -84,11 +84,11 @@ body:not(.egg) #global-error .egg {
 }
 
 .tab.selected {
+    color: #28292a;
     background-color: #f8f8f8;
     border-color: #28292a;
-    border-top: 1px solid #f8f8f8;
     border-width: 1px 1px 0;
-    color: #28292a;
+    border-top: 1px solid #f8f8f8;
 }
 
 .tab-group .tab.selected:first-child {

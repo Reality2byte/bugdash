@@ -1,5 +1,5 @@
-import { _ } from "util";
 import * as BugList from "buglist";
+import { _ } from "util";
 
 /* eslint-disable camelcase */
 

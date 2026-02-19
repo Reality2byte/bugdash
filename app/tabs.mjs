@@ -1,9 +1,9 @@
-import { _, __, cloneTemplate, updateTemplate } from "util";
 import * as BugList from "buglist";
 import * as BugTable from "bugtable";
 import * as Bugzilla from "bugzilla";
 import * as Dialog from "dialog";
 import * as Global from "global";
+import { _, __, cloneTemplate, updateTemplate } from "util";
 
 function addTab(tab, $tabGroup) {
     let $tab = cloneTemplate(_("#tab-template"));

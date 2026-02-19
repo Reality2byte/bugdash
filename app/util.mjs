@@ -18,11 +18,10 @@ export function setLoadingStage(stage) {
 
 export function debounce(targetFunction, wait) {
     let timeout;
-    return () => {
-        const originalArguments = arguments;
+    return (...args) => {
         const later = () => {
             timeout = undefined;
-            targetFunction.apply(undefined, originalArguments);
+            targetFunction.apply(undefined, args);
         };
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
@@ -63,17 +62,17 @@ export function timeAgo(timestamp) {
     const mo = Math.round(dd / 30);
     const yy = Math.round(mo / 12);
     if (ss < 10) return "Just now";
-    if (ss < 45) return ss + " seconds ago";
+    if (ss < 45) return `${ss} seconds ago`;
     if (ss < 90) return "1 minute ago";
-    if (mm < 45) return mm + " minutes ago";
+    if (mm < 45) return `${mm} minutes ago`;
     if (mm < 90) return "1 hour ago";
-    if (hh < 24) return hh + " hours ago";
+    if (hh < 24) return `${hh} hours ago`;
     if (hh < 36) return "1 day ago";
-    if (dd < 30) return dd + " days ago";
+    if (dd < 30) return `${dd} days ago`;
     if (dd < 45) return "1 month ago";
-    if (mo < 12) return mo + " months ago";
+    if (mo < 12) return `${mo} months ago`;
     if (mo < 18) return "1 year ago";
-    return yy + " years ago";
+    return `${yy} years ago`;
 }
 
 export function hashCode(s) {

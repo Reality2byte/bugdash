@@ -1,18 +1,22 @@
 web-files := $(shell find . \( -name '*.css' -o -name '*.html' -o -name '*.mjs' \) -print)
-biome     := NODE_NO_WARNINGS=1 npx --yes --prefer-offline @biomejs/biome@1.9.4 check --config-path=.biome.json
+biome     := NODE_NO_WARNINGS=1 npx --yes @biomejs/biome@2.4.2 check --config-path=.biome.json
 
 .PHONY: format
 format: .git/hooks/pre-commit .format-web
 
 .format-web: .biome.json $(web-files)
-	$(biome) --write $(web-files)
 	./cache-bust update
+	$(biome) --write $(web-files)
 	@touch $@
 
 .PHONY: test
 test:
 	$(biome) $(web-files)
 	./cache-bust check
+
+.PHONY: fix
+fix:
+	$(biome) --write --unsafe $(web-files)
 
 .git/hooks/pre-commit: pre-commit
 	cp pre-commit .git/hooks/pre-commit

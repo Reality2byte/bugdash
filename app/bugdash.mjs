@@ -1,4 +1,3 @@
-import { _ } from "util";
 import * as BugList from "buglist";
 import * as BugTable from "bugtable";
 import * as Dialog from "dialog";
@@ -14,6 +13,7 @@ import * as Stalled from "tabs/stalled";
 import * as Tracked from "tabs/tracked";
 import * as Triage from "tabs/triage";
 import * as Tooltips from "tooltips";
+import { _ } from "util";
 
 window.addEventListener("DOMContentLoaded", async () => {
     // init helpers

@@ -1,9 +1,9 @@
-import { _, localiseNumbers, updateTemplate } from "util";
 import * as BugTable from "bugtable";
 import * as Bugzilla from "bugzilla";
 import * as Global from "global";
 import * as Menus from "menus";
 import * as Tooltips from "tooltips";
+import { _, localiseNumbers, updateTemplate } from "util";
 
 /* global tippy */
 
@@ -243,7 +243,7 @@ async function updateBurnDown() {
     } catch (error) {
         $trendsDefects.classList.remove("loading");
         $trendsDefects.classList.add("error");
-        // eslint-disable-next-line no-console
+        // biome-ignore lint/suspicious/noConsole: helps debugging
         console.error(error);
         document.body.classList.add("global-error");
         return;

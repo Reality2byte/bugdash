@@ -32,31 +32,31 @@ export function queryURL(query, components, includeFields) {
     // Instead we build a query which does:
     // .. ((product AND component) OR (product AND component) ...)
     fieldNumber++;
-    search.append("f" + fieldNumber, "OP");
-    search.append("j" + fieldNumber, "OR");
+    search.append(`f${fieldNumber}`, "OP");
+    search.append(`j${fieldNumber}`, "OR");
 
     if (components) {
         for (const c of components) {
             fieldNumber++;
-            search.append("f" + fieldNumber, "OP");
+            search.append(`f${fieldNumber}`, "OP");
 
             fieldNumber++;
-            search.append("f" + fieldNumber, "product");
-            search.append("o" + fieldNumber, "equals");
-            search.append("v" + fieldNumber, c.product);
+            search.append(`f${fieldNumber}`, "product");
+            search.append(`o${fieldNumber}`, "equals");
+            search.append(`v${fieldNumber}`, c.product);
 
             fieldNumber++;
-            search.append("f" + fieldNumber, "component");
-            search.append("o" + fieldNumber, "equals");
-            search.append("v" + fieldNumber, c.component);
+            search.append(`f${fieldNumber}`, "component");
+            search.append(`o${fieldNumber}`, "equals");
+            search.append(`v${fieldNumber}`, c.component);
 
             fieldNumber++;
-            search.append("f" + fieldNumber, "CP");
+            search.append(`f${fieldNumber}`, "CP");
         }
     }
 
     fieldNumber++;
-    search.append("f" + fieldNumber, "CP");
+    search.append(`f${fieldNumber}`, "CP");
 
     search.append(
         "include_fields",
@@ -81,7 +81,7 @@ export function queryURL(query, components, includeFields) {
     );
     search.append("limit", "0");
 
-    return "bug?" + search.toString();
+    return `bug?${search.toString()}`;
 }
 
 export function queryUrlToBuglistUrl(queryUrl, additional) {
@@ -139,7 +139,7 @@ export async function rest(endpoint, args, ignoreErrors, textResponse) {
         if (args instanceof Object) {
             args = new URLSearchParams(args).toString();
         }
-        url = url + "?" + args;
+        url = `${url}?${args}`;
     }
 
     const apiKey = getApiKey();

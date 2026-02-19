@@ -1,9 +1,9 @@
-import { _, __, chunked, cloneTemplate, shuffle, timeAgo, updateTemplate } from "util";
 import * as Bugzilla from "bugzilla";
 import * as Dialog from "dialog";
 import * as Global from "global";
 import * as Menu from "menus";
 import * as Tooltips from "tooltips";
+import { _, __, chunked, cloneTemplate, shuffle, timeAgo, updateTemplate } from "util";
 
 /* global tippy */
 
@@ -236,7 +236,7 @@ export async function refresh(id) {
     let response;
     try {
         response = await Bugzilla.rest(buglist.url);
-    } catch (error) {
+    } catch (_error) {
         setErrorState(buglist);
         return;
     }
@@ -249,7 +249,7 @@ export async function refresh(id) {
         buglist.$root.classList.add("no-bugs");
         buglist.$root.classList.add("error");
         _(buglist.$root, ".buglist-header .counter").textContent =
-            "Too many bugs (" + response.bugs.length + ")";
+            `Too many bugs (${response.bugs.length})`;
         return;
     }
 
@@ -319,11 +319,11 @@ export async function refresh(id) {
                 const includePromises = [];
                 for (const bug of bugChunk) {
                     includePromises.push(
-                        // biome-ignore lint/suspicious/noAsyncPromiseExecutor:
+                        // biome-ignore lint/suspicious/noAsyncPromiseExecutor: it's fine
                         new Promise(async (resolve) => {
                             try {
                                 bug.include = await buglist.includeFn(bug);
-                            } catch (error) {
+                            } catch (_error) {
                                 failed = true;
                             }
                             resolve(true);

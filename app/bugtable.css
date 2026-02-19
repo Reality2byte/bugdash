@@ -1,23 +1,23 @@
 .bugtable-container {
+    color: #000;
     background: #fff;
     border: 1px solid #28292a;
     border-radius: 4px;
-    color: #000;
 }
 
 .bugtable-header {
+    display: flex;
+    gap: 8px;
+    font-weight: bold;
+    color: #28292a;
     background: #eee;
     border-radius: 4px;
-    color: #28292a;
-    display: flex;
-    font-weight: bold;
-    gap: 8px;
 }
 
 .bugtable-header > div {
-    margin-bottom: auto;
-    margin-top: auto;
     padding: 8px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .bugtable-container:not(.loading) .bugtable-header .loading-spinner {
@@ -39,13 +39,13 @@
 
 .bugtable-header .actions button,
 .bugtable-header .actions .info {
-    font-size: 22px;
     padding: 2px 4px;
+    font-size: 22px;
 }
 
 .bugtable {
-    border-spacing: 0;
     padding: 8px;
+    border-spacing: 0;
 }
 
 .bugtable a {

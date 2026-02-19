@@ -1,7 +1,7 @@
-import { _, __, debounce } from "util";
 import * as Dialog from "dialog";
 import * as Global from "global";
 import * as Tooltips from "tooltips";
+import { _, __, debounce } from "util";
 
 const g = {
     $table: undefined,

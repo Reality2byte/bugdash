@@ -1,87 +1,41 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>BugDash</title>
-        <link rel="preload" href="assets/FiraGO-Book.woff2" as="font" crossorigin />
-        <link
-            rel="preload"
-            href="assets/FiraGO-BookItalic.woff2"
-            as="font"
-            crossorigin
-        />
-        <link rel="preload" href="assets/FiraGO-Medium.woff2" as="font" crossorigin />
-        <link
-            rel="preload"
-            href="assets/FiraGO-MediumItalic.woff2"
-            as="font"
-            crossorigin
-        />
-        <link rel="preload" href="assets/FiraGO-SemiBold.woff2" as="font" crossorigin />
-        <link
-            rel="preload"
-            href="assets/FiraGO-SemiBoldItalic.woff2"
-            as="font"
-            crossorigin
-        />
-        <link
-            rel="preload"
-            href="assets/MaterialSymbolsOutlined.woff"
-            as="font"
-            crossorigin
-        />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="app/global.css?a094240244633373e2aa380c13a976e3"
-        />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="app/tabs.css?7e6a6abd55a4ef6a934e84f1e48e51d2"
-        />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="app/tabs/components.css?b1b1bfcafc86e46e3dc7cb233a2a1ce4"
-        />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="app/tabs/overview.css?7c8e9135cc4c6ffd6c64b53d9f1bb6bb"
-        />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="app/tabs/help.css?c85e68301e2f59a3727b7f4884e85d71"
-        />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="app/buglist.css?620e54a3c69c44c45578bacf160ec123"
-        />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="app/bugtable.css?858502ef516bc0d8f89bf6a491d4d4ff"
-        />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="app/dialog.css?0b89cde36ac140a69346756901fc0155"
-        />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="app/tooltips.css?2f120cc74703183727f6b80825e33d12"
-        />
-        <link rel="icon shortcut" href="assets/bugdash.svg" type="image/svg" />
-        <script type="importmap">{
-    "imports": {
-        "bugdash": "./app/bugdash.mjs?e78e06621d4b65525fae78bcec665bcf",
-        "buglist": "./app/buglist.mjs?c618699658a0375213bbf13a66db8522",
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BugDash</title>
+    <link rel="preload" href="assets/FiraGO-Book.woff2" as="font" crossorigin>
+    <link rel="preload" href="assets/FiraGO-BookItalic.woff2" as="font" crossorigin>
+    <link rel="preload" href="assets/FiraGO-SemiBold.woff2" as="font" crossorigin>
+    <link rel="preload" href="assets/MaterialSymbolsOutlined.woff" as="font" crossorigin>
+    <link rel="stylesheet" type="text/css" href="app/global.css?7946c3f8d54c315357c1074f680e8843">
+    <link rel="stylesheet" type="text/css" href="app/tabs.css?676492d9bcb4bb86657b49beb7c4448f">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="app/tabs/components.css?81df030d4f78569caae8a4bd932dc1cd"
+    >
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="app/tabs/overview.css?990540ad2478b0112ad37c3b0dfec900"
+    >
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="app/tabs/help.css?c85e68301e2f59a3727b7f4884e85d71"
+    >
+    <link rel="stylesheet" type="text/css" href="app/buglist.css?3a8803b72bb098211301753bb1c8041b">
+    <link rel="stylesheet" type="text/css" href="app/bugtable.css?5d4ebc21b4656580d6e28319d737ebe3">
+    <link rel="stylesheet" type="text/css" href="app/dialog.css?ac7e56024618ca7d27da454c08c7b17e">
+    <link rel="stylesheet" type="text/css" href="app/tooltips.css?96325cf63a17b57c482ef97289322845">
+    <link rel="icon shortcut" href="assets/bugdash.svg" type="image/svg">
+    <script type="importmap">
+    {
+      "imports": {
+        "bugdash": "./app/bugdash.mjs?3c86a2fd7435ff05ce0576cd3ab28183",
+        "buglist": "./app/buglist.mjs?7812593f9dd0030634062cfead030b44",
         "buglists/assigned-inactive": "./app/buglists/assigned-inactive.mjs?b67a90e725c212c02980ca7c8581275a",
         "buglists/beta": "./app/buglists/beta.mjs?e5e84f62bb058647374e4639a66cf600",
         "buglists/blockers": "./app/buglists/blockers.mjs?f6e798f0359994ed20a373149cb49798",
@@ -93,745 +47,516 @@
         "buglists/long-tasks": "./app/buglists/long-tasks.mjs?19d1b6c5f947a13a9ee95bc086e1908c",
         "buglists/needinfo-escalated": "./app/buglists/needinfo-escalated.mjs?1a90a65c314b8cfd23e3dbe6ca00c7f7",
         "buglists/needinfo-stale": "./app/buglists/needinfo-stale.mjs?dc84c62b5d70b78f1a0b7d3f463b3923",
-        "buglists/recent-enhancements": "./app/buglists/recent-enhancements.mjs?20ff24591f3857a9e63529e0490dd44e",
+        "buglists/recent-enhancements": "./app/buglists/recent-enhancements.mjs?166abc42e5b161dacb7a8b5b2f4f26af",
         "buglists/recent-regressions": "./app/buglists/recent-regressions.mjs?cc6ff2953e2dbafabf00374136e09fc4",
-        "buglists/recent-tasks": "./app/buglists/recent-tasks.mjs?2c5f3a0d1c2f81b37db38ebb1d1586b9",
+        "buglists/recent-tasks": "./app/buglists/recent-tasks.mjs?18b010d73eeb50a8691d054e9e1c89e1",
         "buglists/regressions": "./app/buglists/regressions.mjs?5bbbf6bfd80a2ee635a87f95f40e6bd9",
         "buglists/reo": "./app/buglists/reo.mjs?cea7533c254b4f1758ee030c75b4beb8",
         "buglists/stalled": "./app/buglists/stalled.mjs?da2d4f814ac5b70c90a3ebb32f3b23e6",
         "buglists/topcrashers": "./app/buglists/topcrashers.mjs?b747f1889a13ac5127212473cf75fc78",
         "buglists/tracked": "./app/buglists/tracked.mjs?47a696d9df9ad3ece6f367fb61e9c6e8",
-        "buglists/triage-needed": "./app/buglists/triage-needed.mjs?29a26c06f30761d9e334be1c080692b6",
-        "bugtable": "./app/bugtable.mjs?9436ca2b2f674d94f6d52af9da9856b8",
-        "bugzilla": "./app/bugzilla.mjs?dd6eb272598bd1a60c70acba11f7173a",
+        "buglists/triage-needed": "./app/buglists/triage-needed.mjs?8e466c0f07b94bf9220da43c38e4e5a1",
+        "bugtable": "./app/bugtable.mjs?128cb6524e5d0568dcd5f4d646cec2b9",
+        "bugzilla": "./app/bugzilla.mjs?19d143e25cc1a67f89963ad8556ba46c",
         "dialog": "./app/dialog.mjs?8c2b0b6af0aa3d362f724856cba39482",
-        "global": "./app/global.mjs?37ac54032fd950b2c62e46a1755893c7",
+        "global": "./app/global.mjs?fbdd7e766cf89a39067950550f24f04d",
         "menus": "./app/menus.mjs?f766e80f5362fc3c647559fac6755822",
-        "tabs": "./app/tabs.mjs?ff35683603298bd4979bdffdce9fced5",
-        "tabs/beta": "./app/tabs/beta.mjs?755512d6affbf032f35b16781513c00c",
-        "tabs/components": "./app/tabs/components.mjs?b328fe75b376d4a17f489174156f6991",
+        "tabs": "./app/tabs.mjs?9741b2d11b9fa118cad5e73be9b4ef3c",
+        "tabs/beta": "./app/tabs/beta.mjs?590b7c9936790717155c21da70f37222",
+        "tabs/components": "./app/tabs/components.mjs?91527e62099e894ee6915c6794ea505b",
         "tabs/help": "./app/tabs/help.mjs?beaaacb30a657ab9eb1e0383e9be2d62",
-        "tabs/important": "./app/tabs/important.mjs?a6806c28e53a600a0e44bd26e1ae7df2",
-        "tabs/overview": "./app/tabs/overview.mjs?e6d5c91d79b6b9f75158a73b85dc0e10",
-        "tabs/reo": "./app/tabs/reo.mjs?ce8d5276985eefecf499a28b54375725",
-        "tabs/stalled": "./app/tabs/stalled.mjs?e06cd9b45aacdd42569caf618d9b6018",
-        "tabs/tracked": "./app/tabs/tracked.mjs?6a9d0e2e895455cd18e51c0ba53ff52a",
-        "tabs/triage": "./app/tabs/triage.mjs?d085a8bfb14425f2ee5fc86dda4d2088",
+        "tabs/important": "./app/tabs/important.mjs?402d31ce117cf7fce8be081764abdfe2",
+        "tabs/overview": "./app/tabs/overview.mjs?a3a226d77b36255540f08a03fbf8b0b9",
+        "tabs/reo": "./app/tabs/reo.mjs?7de1da35f46e4afe6de0d35488b3768f",
+        "tabs/stalled": "./app/tabs/stalled.mjs?35ad2cb4ab092aef77c455daca511acb",
+        "tabs/tracked": "./app/tabs/tracked.mjs?f416cd08cf5dc3101d75d0ccbd41a05f",
+        "tabs/triage": "./app/tabs/triage.mjs?deb37c0fc8702feee793c3d776fae4f2",
         "tooltips": "./app/tooltips.mjs?f6ce915e9ef0058cae9ecc157ad8a1a9",
-        "util": "./app/util.mjs?2819adf7dd003d98a354fbdd975c8c38"
+        "util": "./app/util.mjs?87bbef90644024589546a1b909b693b6"
+      }
     }
-}</script>
-    </head>
-    <body class="loading">
-        <div id="loading">
-            Starting BugDash…
-            <div id="loading-stage"></div>
-            <div id="no-importmap" class="hidden">
-                <p>
-                    BugDash is unable to start as your browser does not support the
-                    "importMap" feature.
-                </p>
-                <p>For Firefox you'll require at least version 108.</p>
-            </div>
-        </div>
+    </script>
+  </head>
+  <body class="loading">
+    <div id="loading">
+      Starting BugDash…
+      <div id="loading-stage"></div>
+      <div id="no-importmap" class="hidden">
+        <p>BugDash is unable to start as your browser does not support the "importMap" feature.</p>
+        <p>For Firefox you'll require at least version 108.</p>
+      </div>
+    </div>
 
-        <div id="dialog-wrapper" class="hidden">
-            <div id="dialog">
-                <div id="dialog-message"></div>
-                <input type="text" id="dialog-input" />
-                <div id="dialog-buttons">
-                    <div class="dialog-button" id="dialog-cancel">Cancel</div>
-                    <div class="dialog-button" id="dialog-ok">OK</div>
+    <div id="dialog-wrapper" class="hidden">
+      <div id="dialog">
+        <div id="dialog-message"></div>
+        <input type="text" id="dialog-input">
+        <div id="dialog-buttons">
+          <div class="dialog-button" id="dialog-cancel">Cancel</div>
+          <div class="dialog-button" id="dialog-ok">OK</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="order-menu-template" class="hidden">
+      <p>Order by</p>
+      <ul>
+        <li data-value="default">Default</li>
+        <li data-value="oldest">Oldest</li>
+        <li data-value="newest">Newest</li>
+        <li data-value="random">Random</li>
+      </ul>
+    </div>
+
+    <div id="closed-filter-menu-template" class="hidden">
+      <p>Opened</p>
+      <ul>
+        <li data-value="all">Any time</li>
+        <li data-value="1y">&lt; 1 year ago</li>
+        <li data-value="2y">&lt; 2 years ago</li>
+      </ul>
+    </div>
+
+    <div id="nav">
+      <div class="tab-group">
+        <div class="tab" data-tab="help">Help</div>
+      </div>
+      <div id="components-tab-group" class="tab-group">
+        <div class="tab selected" data-tab="components">
+          <span id="selected-components-title"
+            >Components
+            <span id="selected-components-count"></span>
+          </span>
+          <span
+            id="selected-components-warning"
+            class="material-icons"
+            title="Some of the specified components were not valid"
+          >
+            warning
+          </span>
+        </div>
+      </div>
+      <div
+        id="refresh-all-button"
+        class="nav-button material-icons"
+        title="Refresh all bug lists.  Shift+Click to also refresh components"
+      >
+        refresh
+      </div>
+      <div class="tab filler">
+        <span
+          id="global-error"
+          title="Failed to load all required information; check web console for details.  Some list may produce incorrect or invalid results."
+        >
+          General failure reading data.
+          <span class="egg">Abort, Retry, Fail?</span>
+        </span>
+      </div>
+      <div id="username"></div>
+      <div id="key-button" class="nav-button material-icons" title="Set Bugzilla API-Key">key</div>
+    </div>
+
+    <div id="tabs-content"></div>
+
+    <!-- help -->
+
+    <div id="tab-help" class="content">
+      <h1>BugDash</h1>
+      <p>
+        Dashboard of bug lists for Firefox-related components in Bugzilla, with a focus on triage
+        and release tracking.
+      </p>
+      <p>
+        For more information about the purpose and process of triage, see
+        <a href="https://firefox-source-docs.mozilla.org/bug-mgmt/policies/triage-bugzilla.html"
+          >the Triage for Bugzilla documentation</a
+        >.
+      </p>
+      <p>
+        This code lives at
+        <a href="https://github.com/mozilla/bugdash">GitHub in the bugdash project</a>. Pull
+        requests welcome.
+      </p>
+
+      <h1>How To Use</h1>
+      <ol>
+        <li>
+          Provide your Bugzilla API-Key by clicking on the
+          <span class="material-icons">key</span>
+          icon near the top right of the page (saved in your browser's localStorage).
+        </li>
+        <li>Use the <b>Components</b> tab to select Bugzilla components you want to view.</li>
+        <li>Switch to the relevant tab.</li>
+      </ol>
+
+      <h1>Bug List Fields</h1>
+      <p>Use the tooltips on the sample bug below to see the field associated with each value.</p>
+      <div id="help-sample"></div>
+    </div>
+
+    <!-- components -->
+
+    <div id="tab-components" class="content selected">
+      <h1>Select Component(s)</h1>
+
+      <div>
+        <input id="component-filter" type="search" placeholder="Filter…">
+        <select id="filter-scope">
+          <option value="title">Name</option>
+          <option value="team">Team</option>
+        </select>
+        <div id="filter-actions">
+          <button id="filter-all">Select Visible</button>
+          <button id="filter-none-visible">Deselect Visible</button>
+          <button id="filter-none">Deselect All</button>
+          <input type="checkbox" id="filter-selected">
+          <label for="filter-selected">Selected Only</label>
+        </div>
+      </div>
+
+      <table id="components">
+        <thead>
+          <tr>
+            <th id="components-th-cb"></th>
+            <th id="components-th-name">Component</th>
+            <th id="components-th-team">Team</th>
+            <th id="components-th-desc">Description</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <template id="components-row">
+        <tr class="row">
+          <td><input type="checkbox"></td>
+          <td class="name"><label data-field="title"></label></td>
+          <td class="team"><label data-field="team"></label></td>
+          <td class="desc"><label data-field="desc"></label></td>
+        </tr>
+      </template>
+
+      <div id="no-matching-components">No matching components.</div>
+    </div>
+
+    <!-- template: tab -->
+    <template id="tab-template"> <div class="tab" data-tab="" data-field="title"></div> </template>
+
+    <!-- template: tab-content -->
+    <template id="tab-content-template">
+      <div data-id-field="outer" class="content">
+        <div data-id-field="inner"></div>
+      </div>
+    </template>
+
+    <!-- template: buglist group -->
+    <template id="buglist-group-template">
+      <div class="buglist-group">
+        <div class="buglist-group-actions">
+          <a href="#" data-action="expand">Expand All</a>
+          &bull;
+          <a href="#" data-action="collapse">Collapse All</a>
+        </div>
+      </div>
+    </template>
+
+    <!-- template: buglist -->
+    <template id="buglist-template">
+      <div class="buglist-container closed loading">
+        <div class="buglist-header">
+          <div class="toggle"></div>
+          <div class="summary" data-field="title"></div>
+          <div class="loading-spinner"></div>
+          <div class="counter">-</div>
+          <div class="actions">
+            <div class="info material-icons" data-title-field="description">question_mark</div>
+            <button class="refresh-btn material-icons">refresh</button>
+            <div class="action">
+              <button class="order-btn material-icons" data-mode="default">sort</button>
+            </div>
+            <button class="buglist-btn material-icons">bug_report</button>
+          </div>
+        </div>
+        <div class="buglist-loading">Loading…</div>
+        <table class="buglist"></table>
+      </div>
+    </template>
+
+    <!-- template: default bug row -->
+    <template id="bug-row-template">
+      <tr class="bug-row">
+        <td class="bug-id">
+          <a href="#" data-href-field="url" data-field="id" target="_blank"></a>
+        </td>
+        <td colspan="7">
+          <a
+            href="#"
+            class="bug-summary"
+            data-field="summary"
+            data-href-field="url"
+            target="_blank"
+          ></a>
+        </td>
+      </tr>
+      <tr class="bug-row bug-meta">
+        <td class="bug-icons material-icons">
+          <span class="type" data-title-field="type" data-field="type_icon"></span
+          ><span
+            class="needinfo"
+            data-title-field="needinfo_target"
+            data-field="needinfo_icon"
+          ></span><span class="groups" data-title-field="groups" data-field="groups_icon"></span>
+        </td>
+        <td class="severity" data-title-field="severity_title" data-field="severity"></td>
+        <td class="priority" data-title-field="priority_title" data-field="priority"></td>
+        <td class="component" data-title-field="component_title">
+          <span data-field="product"></span>:
+          <span data-field="component"></span>
+        </td>
+        <td class="reporter" data-field="creator_nick" data-title-field="creator_name"></td>
+        <td class="owner" data-field="assigned_to_nick" data-title-field="assigned_to_name"></td>
+        <td class="keywords" data-title-field="keywords_title" data-field="keywords"></td>
+        <td class="timestamp"></td>
+      </tr>
+    </template>
+
+    <template id="bug-row-timestamp-creation">
+      <span class="creation" data-field="timestamp_ago" data-title-field="timestamp"></span>
+    </template>
+
+    <template id="bug-row-timestamp-needinfo">
+      <span data-field="needinfo_nick" data-title-field="needinfo_name"></span>
+      :
+      <span data-field="needinfo_ago" data-title-field="needinfo_date"></span>
+    </template>
+
+    <!-- template: overview -->
+    <template id="overview-template">
+      <div class="open-defects bugtable-container">
+        <div class="bugtable-header">
+          <div class="summary">Open Defects by Severity</div>
+          <div class="loading-spinner"></div>
+          <div class="error">Failed to load bugs</div>
+          <div class="actions"><button class="refresh-btn material-icons">refresh</button></div>
+        </div>
+        <table class="bugtable">
+          <tr>
+            <th>All</th>
+            <th>S1</th>
+            <th>S2</th>
+            <th>S3</th>
+            <th>S4</th>
+            <th title="Untriaged">Un</th>
+          </tr>
+          <tr>
+            <td><a href="#" data-href-field="saurl" data-field="sa"></a></td>
+            <td><a href="#" data-href-field="s1url" data-field="s1"></a></td>
+            <td><a href="#" data-href-field="s2url" data-field="s2"></a></td>
+            <td><a href="#" data-href-field="s3url" data-field="s3"></a></td>
+            <td><a href="#" data-href-field="s4url" data-field="s4"></a></td>
+            <td><a href="#" data-href-field="suurl" data-field="su"></a></td>
+          </tr>
+        </table>
+      </div>
+      <div class="trends-defects bugtable-container">
+        <div class="bugtable-header">
+          <div class="summary">Maintenance Trend</div>
+          <div class="loading-spinner"></div>
+          <div class="error">Failed to load bugs</div>
+          <div class="info">
+            <a
+              href="https://docs.google.com/document/d/1y2dUDZI5U3xvY0jMY1LfIDARc5b_QB9mS2DV7MWrfa0"
+              >About Maintenance Effectiveness</a
+            >
+          </div>
+          <div class="actions"><button class="refresh-btn material-icons">refresh</button></div>
+        </div>
+        <table class="bugtable">
+          <tr>
+            <th rowspan="2" title="Values for bugs within the last N weeks">Period</th>
+            <th rowspan="2" title="Maintenance Effectiveness">Maint<br>Effect</th>
+
+            <th rowspan="2" title="Estimated Burndown Time (years)">Burn<br>Down</th>
+            <th class="spanned" colspan="6">
+              <div class="sub-header">
+                <div></div>
+                <div class="sub-title">Opened</div>
+                <div class="actions">
+                  <div class="action">
+                    <div class="material-icons" title="Bugs opened/created within the period.">
+                      question_mark
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-
-        <div id="order-menu-template" class="hidden">
-            <p>Order by</p>
-            <ul>
-                <li data-value="default">Default</li>
-                <li data-value="oldest">Oldest</li>
-                <li data-value="newest">Newest</li>
-                <li data-value="random">Random</li>
-            </ul>
-        </div>
-
-        <div id="closed-filter-menu-template" class="hidden">
-            <p>Opened</p>
-            <ul>
-                <li data-value="all">Any time</li>
-                <li data-value="1y">&lt; 1 year ago</li>
-                <li data-value="2y">&lt; 2 years ago</li>
-            </ul>
-        </div>
-
-        <div id="nav">
-            <div class="tab-group">
-                <div class="tab" data-tab="help">Help</div>
-            </div>
-            <div id="components-tab-group" class="tab-group">
-                <div class="tab selected" data-tab="components">
-                    <span id="selected-components-title"
-                        >Components
-                        <span id="selected-components-count"></span>
-                    </span>
-                    <span
-                        id="selected-components-warning"
-                        class="material-icons"
-                        title="Some of the specified components were not valid"
+              </div>
+            </th>
+            <th class="spanned" colspan="6">
+              <div class="sub-header">
+                <div></div>
+                <div class="sub-title">Closed</div>
+                <div class="actions">
+                  <div class="action">
+                    <div
+                      class="material-icons"
+                      title="Bugs closed within the period.  Use the filter to restrict the list based on the bug's age."
                     >
-                        warning
-                    </span>
-                </div>
-            </div>
-            <div
-                id="refresh-all-button"
-                class="nav-button material-icons"
-                title="Refresh all bug lists.  Shift+Click to also refresh components"
-            >
-                refresh
-            </div>
-            <div class="tab filler">
-                <span
-                    id="global-error"
-                    title="Failed to load all required information; check web console for details.  Some list may produce incorrect or invalid results."
-                >
-                    General failure reading data.
-                    <span class="egg">Abort, Retry, Fail?</span>
-                </span>
-            </div>
-            <div id="username"></div>
-            <div
-                id="key-button"
-                class="nav-button material-icons"
-                title="Set Bugzilla API-Key"
-            >
-                key
-            </div>
-        </div>
-
-        <div id="tabs-content"></div>
-
-        <!-- help -->
-
-        <div id="tab-help" class="content">
-            <h1>BugDash</h1>
-            <p>
-                Dashboard of bug lists for Firefox-related components in Bugzilla, with
-                a focus on triage and release tracking.
-            </p>
-            <p>
-                For more information about the purpose and process of triage, see
-                <a
-                    href="https://firefox-source-docs.mozilla.org/bug-mgmt/policies/triage-bugzilla.html"
-                    >the Triage for Bugzilla documentation</a
-                >.
-            </p>
-            <p>
-                This code lives at
-                <a href="https://github.com/mozilla/bugdash"
-                    >GitHub in the bugdash project</a
-                >. Pull requests welcome.
-            </p>
-
-            <h1>How To Use</h1>
-            <ol>
-                <li>
-                    Provide your Bugzilla API-Key by clicking on the
-                    <span class="material-icons">key</span> icon near the top right of
-                    the page (saved in your browser's localStorage).
-                </li>
-                <li>
-                    Use the <b>Components</b> tab to select Bugzilla components you want
-                    to view.
-                </li>
-                <li>Switch to the relevant tab.</li>
-            </ol>
-
-            <h1>Bug List Fields</h1>
-            <p>
-                Use the tooltips on the sample bug below to see the field associated
-                with each value.
-            </p>
-            <div id="help-sample"></div>
-        </div>
-
-        <!-- components -->
-
-        <div id="tab-components" class="content selected">
-            <h1>Select Component(s)</h1>
-
-            <div>
-                <input id="component-filter" type="search" placeholder="Filter…" />
-                <select id="filter-scope">
-                    <option value="title">Name</option>
-                    <option value="team">Team</option>
-                </select>
-                <div id="filter-actions">
-                    <button id="filter-all">Select Visible</button>
-                    <button id="filter-none-visible">Deselect Visible</button>
-                    <button id="filter-none">Deselect All</button>
-                    <input type="checkbox" id="filter-selected" />
-                    <label for="filter-selected">Selected Only</label>
-                </div>
-            </div>
-
-            <table id="components">
-                <thead>
-                    <tr>
-                        <th id="components-th-cb"></th>
-                        <th id="components-th-name">Component</th>
-                        <th id="components-th-team">Team</th>
-                        <th id="components-th-desc">Description</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <template id="components-row">
-                <tr class="row">
-                    <td><input type="checkbox" /></td>
-                    <td class="name"><label data-field="title"></label></td>
-                    <td class="team"><label data-field="team"></label></td>
-                    <td class="desc"><label data-field="desc"></label></td>
-                </tr>
-            </template>
-
-            <div id="no-matching-components">No matching components.</div>
-        </div>
-
-        <!-- template: tab -->
-        <template id="tab-template">
-            <div class="tab" data-tab="" data-field="title"></div>
-        </template>
-
-        <!-- template: tab-content -->
-        <template id="tab-content-template">
-            <div data-id-field="outer" class="content">
-                <div data-id-field="inner"></div>
-            </div>
-        </template>
-
-        <!-- template: buglist group -->
-        <template id="buglist-group-template">
-            <div class="buglist-group">
-                <div class="buglist-group-actions">
-                    <a href="#" data-action="expand">Expand All</a>
-                    &bull;
-                    <a href="#" data-action="collapse">Collapse All</a>
-                </div>
-            </div>
-        </template>
-
-        <!-- template: buglist -->
-        <template id="buglist-template">
-            <div class="buglist-container closed loading">
-                <div class="buglist-header">
-                    <div class="toggle"></div>
-                    <div class="summary" data-field="title"></div>
-                    <div class="loading-spinner"></div>
-                    <div class="counter">-</div>
-                    <div class="actions">
-                        <div class="info material-icons" data-title-field="description">
-                            question_mark
-                        </div>
-                        <button class="refresh-btn material-icons">refresh</button>
-                        <div class="action">
-                            <button
-                                class="order-btn material-icons"
-                                data-mode="default"
-                            >
-                                sort
-                            </button>
-                        </div>
-                        <button class="buglist-btn material-icons">bug_report</button>
+                      question_mark
                     </div>
+                  </div>
+                  <div class="action">
+                    <button id="closed-filter-btn" class="material-icons">filter_alt</button>
+                  </div>
                 </div>
-                <div class="buglist-loading">Loading…</div>
-                <table class="buglist"></table>
-            </div>
-        </template>
+              </div>
+            </th>
+          </tr>
+          <tr class="no-border">
+            <th class="sub-border">All</th>
+            <th>S1</th>
+            <th>S2</th>
+            <th>S3</th>
+            <th>S4</th>
+            <th title="Untriaged" class="force-border">Un</th>
+            <th class="sub-border">All</th>
+            <th>S1</th>
+            <th>S2</th>
+            <th>S3</th>
+            <th>S4</th>
+            <th title="Untriaged">Un</th>
+          </tr>
+          <tr>
+            <td>1 week</td>
+            <td data-field="w1_me"></td>
+            <td data-field="w1_bd"></td>
+            <td class="sub-border">
+              <a href="#" data-href-field="w1_opened_saurl" data-field="w1_opened_sa"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w1_opened_s1url" data-field="w1_opened_s1"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w1_opened_s2url" data-field="w1_opened_s2"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w1_opened_s3url" data-field="w1_opened_s3"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w1_opened_s4url" data-field="w1_opened_s4"></a>
+            </td>
+            <td class="force-border">
+              <a href="#" data-href-field="w1_opened_suurl" data-field="w1_opened_su"></a>
+            </td>
+            <td class="sub-border">
+              <a href="#" data-href-field="w1_closed_saurl" data-field="w1_closed_sa"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w1_closed_s1url" data-field="w1_closed_s1"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w1_closed_s2url" data-field="w1_closed_s2"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w1_closed_s3url" data-field="w1_closed_s3"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w1_closed_s4url" data-field="w1_closed_s4"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w1_closed_suurl" data-field="w1_closed_su"></a>
+            </td>
+          </tr>
+          <tr>
+            <td>4 weeks</td>
+            <td data-field="w4_me"></td>
+            <td data-field="w4_bd"></td>
+            <td class="sub-border">
+              <a href="#" data-href-field="w4_opened_saurl" data-field="w4_opened_sa"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w4_opened_s1url" data-field="w4_opened_s1"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w4_opened_s2url" data-field="w4_opened_s2"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w4_opened_s3url" data-field="w4_opened_s3"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w4_opened_s4url" data-field="w4_opened_s4"></a>
+            </td>
+            <td class="force-border">
+              <a href="#" data-href-field="w4_opened_suurl" data-field="w4_opened_su"></a>
+            </td>
+            <td class="sub-border">
+              <a href="#" data-href-field="w4_closed_saurl" data-field="w4_closed_sa"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w4_closed_s1url" data-field="w4_closed_s1"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w4_closed_s2url" data-field="w4_closed_s2"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w4_closed_s3url" data-field="w4_closed_s3"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w4_closed_s4url" data-field="w4_closed_s4"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w4_closed_suurl" data-field="w4_closed_su"></a>
+            </td>
+          </tr>
+          <tr>
+            <td>12 weeks</td>
+            <td data-field="w12_me"></td>
+            <td data-field="w12_bd"></td>
+            <td class="sub-border">
+              <a href="#" data-href-field="w12_opened_saurl" data-field="w12_opened_sa"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w12_opened_s1url" data-field="w12_opened_s1"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w12_opened_s2url" data-field="w12_opened_s2"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w12_opened_s3url" data-field="w12_opened_s3"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w12_opened_s4url" data-field="w12_opened_s4"></a>
+            </td>
+            <td class="force-border">
+              <a href="#" data-href-field="w12_opened_suurl" data-field="w12_opened_su"></a>
+            </td>
+            <td class="sub-border">
+              <a href="#" data-href-field="w12_closed_saurl" data-field="w12_closed_sa"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w12_closed_s1url" data-field="w12_closed_s1"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w12_closed_s2url" data-field="w12_closed_s2"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w12_closed_s3url" data-field="w12_closed_s3"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w12_closed_s4url" data-field="w12_closed_s4"></a>
+            </td>
+            <td class="no-border">
+              <a href="#" data-href-field="w12_closed_suurl" data-field="w12_closed_su"></a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </template>
 
-        <!-- template: default bug row -->
-        <template id="bug-row-template">
-            <tr class="bug-row">
-                <td class="bug-id">
-                    <a
-                        href="#"
-                        data-href-field="url"
-                        data-field="id"
-                        target="_blank"
-                    ></a>
-                </td>
-                <td colspan="7">
-                    <a
-                        href="#"
-                        class="bug-summary"
-                        data-field="summary"
-                        data-href-field="url"
-                        target="_blank"
-                    ></a>
-                </td>
-            </tr>
-            <tr class="bug-row bug-meta">
-                <td class="bug-icons material-icons">
-                    <span
-                        class="type"
-                        data-title-field="type"
-                        data-field="type_icon"
-                    ></span
-                    ><span
-                        class="needinfo"
-                        data-title-field="needinfo_target"
-                        data-field="needinfo_icon"
-                    ></span
-                    ><span
-                        class="groups"
-                        data-title-field="groups"
-                        data-field="groups_icon"
-                    ></span>
-                </td>
-                <td
-                    class="severity"
-                    data-title-field="severity_title"
-                    data-field="severity"
-                ></td>
-                <td
-                    class="priority"
-                    data-title-field="priority_title"
-                    data-field="priority"
-                ></td>
-                <td class="component" data-title-field="component_title">
-                    <span data-field="product"></span>:
-                    <span data-field="component"></span>
-                </td>
-                <td
-                    class="reporter"
-                    data-field="creator_nick"
-                    data-title-field="creator_name"
-                ></td>
-                <td
-                    class="owner"
-                    data-field="assigned_to_nick"
-                    data-title-field="assigned_to_name"
-                ></td>
-                <td
-                    class="keywords"
-                    data-title-field="keywords_title"
-                    data-field="keywords"
-                ></td>
-                <td class="timestamp"></td>
-            </tr>
-        </template>
+    <script>
+    import("util").catch(() => {
+      document.querySelector("#no-importmap").classList.remove("hidden");
+    });
+    </script>
 
-        <template id="bug-row-timestamp-creation">
-            <span
-                class="creation"
-                data-field="timestamp_ago"
-                data-title-field="timestamp"
-            ></span>
-        </template>
-
-        <template id="bug-row-timestamp-needinfo">
-            <span data-field="needinfo_nick" data-title-field="needinfo_name"></span>
-            :
-            <span data-field="needinfo_ago" data-title-field="needinfo_date"></span>
-        </template>
-
-        <!-- template: overview -->
-        <template id="overview-template">
-            <div class="open-defects bugtable-container">
-                <div class="bugtable-header">
-                    <div class="summary">Open Defects by Severity</div>
-                    <div class="loading-spinner"></div>
-                    <div class="error">Failed to load bugs</div>
-                    <div class="actions">
-                        <button class="refresh-btn material-icons">refresh</button>
-                    </div>
-                </div>
-                <table class="bugtable">
-                    <tr>
-                        <th>All</th>
-                        <th>S1</th>
-                        <th>S2</th>
-                        <th>S3</th>
-                        <th>S4</th>
-                        <th title="Untriaged">Un</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="#" data-href-field="saurl" data-field="sa"></a>
-                        </td>
-                        <td>
-                            <a href="#" data-href-field="s1url" data-field="s1"></a>
-                        </td>
-                        <td>
-                            <a href="#" data-href-field="s2url" data-field="s2"></a>
-                        </td>
-                        <td>
-                            <a href="#" data-href-field="s3url" data-field="s3"></a>
-                        </td>
-                        <td>
-                            <a href="#" data-href-field="s4url" data-field="s4"></a>
-                        </td>
-                        <td>
-                            <a href="#" data-href-field="suurl" data-field="su"></a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="trends-defects bugtable-container">
-                <div class="bugtable-header">
-                    <div class="summary">Maintenance Trend</div>
-                    <div class="loading-spinner"></div>
-                    <div class="error">Failed to load bugs</div>
-                    <div class="info">
-                        <a
-                            href="https://docs.google.com/document/d/1y2dUDZI5U3xvY0jMY1LfIDARc5b_QB9mS2DV7MWrfa0"
-                            >About Maintenance Effectiveness</a
-                        >
-                    </div>
-                    <div class="actions">
-                        <button class="refresh-btn material-icons">refresh</button>
-                    </div>
-                </div>
-                <table class="bugtable">
-                    <tr>
-                        <th rowspan="2" title="Values for bugs within the last N weeks">
-                            Period
-                        </th>
-                        <th rowspan="2" title="Maintenance Effectiveness">
-                            Maint<br />Effect
-                        </th>
-
-                        <th rowspan="2" title="Estimated Burndown Time (years)">
-                            Burn<br />Down
-                        </th>
-                        <th class="spanned" colspan="6">
-                            <div class="sub-header">
-                                <div></div>
-                                <div class="sub-title">Opened</div>
-                                <div class="actions">
-                                    <div class="action">
-                                        <div class="material-icons" title="Bugs opened/created within the period.">
-                                            question_mark
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </th>
-                        <th class="spanned" colspan="6">
-                            <div class="sub-header">
-                                <div></div>
-                                <div class="sub-title">Closed</div>
-                                <div class="actions">
-                                    <div class="action">
-                                        <div class="material-icons" title="Bugs closed within the period.  Use the filter to restrict the list based on the bug's age.">
-                                            question_mark
-                                        </div>
-                                    </div>
-                                    <div class="action">
-                                        <button id="closed-filter-btn" class="material-icons">filter_alt</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </th>
-                    </tr>
-                    <tr class="no-border">
-                        <th class="sub-border">All</th>
-                        <th>S1</th>
-                        <th>S2</th>
-                        <th>S3</th>
-                        <th>S4</th>
-                        <th title="Untriaged" class="force-border">Un</th>
-                        <th class="sub-border">All</th>
-                        <th>S1</th>
-                        <th>S2</th>
-                        <th>S3</th>
-                        <th>S4</th>
-                        <th title="Untriaged">Un</th>
-                    </tr>
-                    <tr>
-                        <td>1 week</td>
-                        <td data-field="w1_me"></td>
-                        <td data-field="w1_bd"></td>
-                        <td class="sub-border">
-                            <a
-                                href="#"
-                                data-href-field="w1_opened_saurl"
-                                data-field="w1_opened_sa"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w1_opened_s1url"
-                                data-field="w1_opened_s1"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w1_opened_s2url"
-                                data-field="w1_opened_s2"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w1_opened_s3url"
-                                data-field="w1_opened_s3"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w1_opened_s4url"
-                                data-field="w1_opened_s4"
-                            ></a>
-                        </td>
-                        <td class="force-border">
-                            <a
-                                href="#"
-                                data-href-field="w1_opened_suurl"
-                                data-field="w1_opened_su"
-                            ></a>
-                        </td>
-                        <td class="sub-border">
-                            <a
-                                href="#"
-                                data-href-field="w1_closed_saurl"
-                                data-field="w1_closed_sa"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w1_closed_s1url"
-                                data-field="w1_closed_s1"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w1_closed_s2url"
-                                data-field="w1_closed_s2"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w1_closed_s3url"
-                                data-field="w1_closed_s3"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w1_closed_s4url"
-                                data-field="w1_closed_s4"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w1_closed_suurl"
-                                data-field="w1_closed_su"
-                            ></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4 weeks</td>
-                        <td data-field="w4_me"></td>
-                        <td data-field="w4_bd"></td>
-                        <td class="sub-border">
-                            <a
-                                href="#"
-                                data-href-field="w4_opened_saurl"
-                                data-field="w4_opened_sa"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w4_opened_s1url"
-                                data-field="w4_opened_s1"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w4_opened_s2url"
-                                data-field="w4_opened_s2"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w4_opened_s3url"
-                                data-field="w4_opened_s3"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w4_opened_s4url"
-                                data-field="w4_opened_s4"
-                            ></a>
-                        </td>
-                        <td class="force-border">
-                            <a
-                                href="#"
-                                data-href-field="w4_opened_suurl"
-                                data-field="w4_opened_su"
-                            ></a>
-                        </td>
-                        <td class="sub-border">
-                            <a
-                                href="#"
-                                data-href-field="w4_closed_saurl"
-                                data-field="w4_closed_sa"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w4_closed_s1url"
-                                data-field="w4_closed_s1"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w4_closed_s2url"
-                                data-field="w4_closed_s2"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w4_closed_s3url"
-                                data-field="w4_closed_s3"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w4_closed_s4url"
-                                data-field="w4_closed_s4"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w4_closed_suurl"
-                                data-field="w4_closed_su"
-                            ></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>12 weeks</td>
-                        <td data-field="w12_me"></td>
-                        <td data-field="w12_bd"></td>
-                        <td class="sub-border">
-                            <a
-                                href="#"
-                                data-href-field="w12_opened_saurl"
-                                data-field="w12_opened_sa"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w12_opened_s1url"
-                                data-field="w12_opened_s1"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w12_opened_s2url"
-                                data-field="w12_opened_s2"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w12_opened_s3url"
-                                data-field="w12_opened_s3"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w12_opened_s4url"
-                                data-field="w12_opened_s4"
-                            ></a>
-                        </td>
-                        <td class="force-border">
-                            <a
-                                href="#"
-                                data-href-field="w12_opened_suurl"
-                                data-field="w12_opened_su"
-                            ></a>
-                        </td>
-                        <td class="sub-border">
-                            <a
-                                href="#"
-                                data-href-field="w12_closed_saurl"
-                                data-field="w12_closed_sa"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w12_closed_s1url"
-                                data-field="w12_closed_s1"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w12_closed_s2url"
-                                data-field="w12_closed_s2"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w12_closed_s3url"
-                                data-field="w12_closed_s3"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w12_closed_s4url"
-                                data-field="w12_closed_s4"
-                            ></a>
-                        </td>
-                        <td class="no-border">
-                            <a
-                                href="#"
-                                data-href-field="w12_closed_suurl"
-                                data-field="w12_closed_su"
-                            ></a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </template>
-
-        <script>
-            import("util").catch(() => {
-                document.querySelector("#no-importmap").classList.remove("hidden");
-            });
-        </script>
-
-        <script src="assets/popperjs-2.11.7.min.js"></script>
-        <script src="assets/tippyjs-6.3.7.min.js"></script>
-        <script
-            type="module"
-            src="app/bugdash.mjs?e78e06621d4b65525fae78bcec665bcf"
-        ></script>
-    </body>
+    <script src="assets/popperjs-2.11.7.min.js"></script>
+    <script src="assets/tippyjs-6.3.7.min.js"></script>
+    <script type="module" src="app/bugdash.mjs?3c86a2fd7435ff05ce0576cd3ab28183"></script>
+  </body>
 </html>

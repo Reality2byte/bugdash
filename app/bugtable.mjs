@@ -72,7 +72,7 @@ export async function updateWrapper(id, loadHandler, updateHandler) {
     } catch (error) {
         bugtable.$root.classList.remove("loading");
         bugtable.$root.classList.add("error");
-        // eslint-disable-next-line no-console
+        // biome-ignore lint/suspicious/noConsole: helps debugging
         console.error(error);
         document.body.classList.add("global-error");
         return;

@@ -1,6 +1,6 @@
-import { _, __, hashCode, setLoadingStage } from "util";
 import * as Bugzilla from "bugzilla";
 import * as Dialog from "dialog";
+import { _, __, hashCode, setLoadingStage } from "util";
 
 const g = {
     appVersion: 1, // bump to force component reloading
@@ -63,7 +63,7 @@ export function releaseData() {
 async function loadVersions() {
     setLoadingStage("Firefox versions");
     let response = await fetch(
-        "https://product-details.mozilla.org/1.0/firefox_versions.json?" + Date.now(),
+        `https://product-details.mozilla.org/1.0/firefox_versions.json?${Date.now()}`,
     );
     let data = await response.json();
     g.nightly = {};
@@ -78,7 +78,7 @@ async function loadVersions() {
 
     setLoadingStage("Firefox releases");
     response = await fetch(
-        "https://product-details.mozilla.org/1.0/firefox.json?" + Date.now(),
+        `https://product-details.mozilla.org/1.0/firefox.json?${Date.now()}`,
     );
     data = await response.json();
 
@@ -106,17 +106,17 @@ async function loadVersions() {
             dot++;
         }
         if (!g[channel].date) {
-            // eslint-disable-next-line no-console
+            // biome-ignore lint/suspicious/noConsole: should never happen
             console.error(`Failed to find merge date for ${channel}`);
             document.body.classList.add("global-error");
         }
     }
 
-    /* eslint-disable no-console */
+    // biome-ignore-start lint/suspicious/noConsole: info
     console.log("Nightly", g.nightly);
     console.log("Beta", g.beta);
     console.log("Release", g.release);
-    /* eslint-enable no-console */
+    // biome-ignore-end lint/suspicious/noConsole: info
 }
 
 async function loadComponents() {
@@ -144,7 +144,7 @@ async function loadComponents() {
                 },
             );
             if (response.products.length === 0) {
-                // eslint-disable-next-line no-console
+                // biome-ignore lint/suspicious/noConsole: safe to ignore, but useful for debugging
                 console.error("Invalid product:", product);
                 document.body.classList.add("global-error");
                 continue;
