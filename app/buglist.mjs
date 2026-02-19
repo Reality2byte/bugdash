@@ -95,6 +95,7 @@ export function initUI() {
 export function initUiLast() {
     for (const $button of __(".order-btn")) {
         const buglist = g.buglists[$button.closest(".buglist-container").id];
+        if (!buglist) continue;
         const $menuAction = $button.closest(".action");
         Menu.initOptionsMenu(
             $menuAction,
@@ -109,6 +110,14 @@ export function initUiLast() {
                 refresh(buglist.id);
             },
         );
+        if (buglist.counterGuidelines !== undefined) {
+            _(buglist.$root, ".buglist-header .counter-guidelines").textContent =
+                "guidelines";
+            Tooltips.set(
+                _(buglist.$root, ".buglist-header .counter-guidelines"),
+                buglist.counterGuidelines,
+            );
+        }
     }
 }
 
@@ -134,6 +143,7 @@ export function append({
     lazyLoad,
     limit,
     augmentRow,
+    counterGuidelines,
 } = {}) {
     const $root = cloneTemplate(_("#buglist-template")).querySelector(
         ".buglist-container",
@@ -161,6 +171,7 @@ export function append({
         url: undefined,
         initialised: false,
         augmentRow: augmentRow,
+        counterGuidelines: counterGuidelines,
     };
     if (lazyLoad) {
         $root.classList.add("lazy");

@@ -26,7 +26,7 @@
       type="text/css"
       href="app/tabs/help.css?c85e68301e2f59a3727b7f4884e85d71"
     >
-    <link rel="stylesheet" type="text/css" href="app/buglist.css?3a8803b72bb098211301753bb1c8041b">
+    <link rel="stylesheet" type="text/css" href="app/buglist.css?b089560dfc62fb176240d7e60b54c148">
     <link rel="stylesheet" type="text/css" href="app/bugtable.css?5d4ebc21b4656580d6e28319d737ebe3">
     <link rel="stylesheet" type="text/css" href="app/dialog.css?ac7e56024618ca7d27da454c08c7b17e">
     <link rel="stylesheet" type="text/css" href="app/tooltips.css?96325cf63a17b57c482ef97289322845">
@@ -35,9 +35,9 @@
     {
       "imports": {
         "bugdash": "./app/bugdash.mjs?3c86a2fd7435ff05ce0576cd3ab28183",
-        "buglist": "./app/buglist.mjs?7812593f9dd0030634062cfead030b44",
+        "buglist": "./app/buglist.mjs?8549f009ca5d4b30f8f0a9451fda3324",
         "buglists/assigned-inactive": "./app/buglists/assigned-inactive.mjs?b67a90e725c212c02980ca7c8581275a",
-        "buglists/beta": "./app/buglists/beta.mjs?e5e84f62bb058647374e4639a66cf600",
+        "buglists/beta": "./app/buglists/beta.mjs?c6ef7768c95f7273ed2ad3b73a593802",
         "buglists/blockers": "./app/buglists/blockers.mjs?f6e798f0359994ed20a373149cb49798",
         "buglists/blockers-unassigned": "./app/buglists/blockers-unassigned.mjs?a0cee09f85518dd9e32f9edc7e6e41ad",
         "buglists/criticals": "./app/buglists/criticals.mjs?6fdcb204dc26bd419a9e068235001603",
@@ -265,7 +265,10 @@
           <div class="toggle"></div>
           <div class="summary" data-field="title"></div>
           <div class="loading-spinner"></div>
-          <div class="counter">-</div>
+          <div>
+            <span class="counter">-</span>
+            <span class="counter-guidelines"></span>
+          </div>
           <div class="actions">
             <div class="info material-icons" data-title-field="description">question_mark</div>
             <button class="refresh-btn material-icons">refresh</button>

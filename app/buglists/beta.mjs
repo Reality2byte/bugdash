@@ -60,6 +60,7 @@ export function init($container, usesComponents) {
             v3: "intermittent-bug-filer@mozilla.bugs",
         },
         usesComponents: usesComponents,
+        counterGuidelines: "<75 for early beta\n<40 for late beta\n<30 for RC week",
     });
 
     BugList.append({
@@ -101,6 +102,7 @@ export function init($container, usesComponents) {
             v7: "intermittent-bug-filer@mozilla.bugs",
         },
         usesComponents: usesComponents,
+        counterGuidelines: "<110 for early beta\n<60 for late beta\n<10 for RC week",
     });
 
     BugList.append({
@@ -139,6 +141,7 @@ export function init($container, usesComponents) {
             f6: "CP",
         },
         usesComponents: usesComponents,
+        counterGuidelines: "<18 for early beta\n<10 for late beta\n<3 for RC week",
     });
 
     BugList.append({
@@ -194,6 +197,7 @@ export function init($container, usesComponents) {
             v2: "unaffected, ---",
         },
         usesComponents: usesComponents,
+        counterGuidelines: "<5 for early beta\n<3 for late beta\n<1 for RC week",
     });
 
     BugList.append({
@@ -256,6 +260,7 @@ export function init($container, usesComponents) {
             v12: "DUPLICATE,WONTFIX,INVALID",
         },
         usesComponents: usesComponents,
+        counterGuidelines: "<5 for early beta\n<3 for late beta\n<1 for RC week",
     });
 
     BugList.append({
@@ -282,5 +287,6 @@ export function init($container, usesComponents) {
             v2: "stalled",
         },
         usesComponents: usesComponents,
+        counterGuidelines: "<18 for early beta\n<8 for late beta\n<2 for RC week",
     });
 }

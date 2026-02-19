@@ -93,12 +93,19 @@
     display: none;
 }
 
-.buglist-container.loading:not(.lazy) .buglist-header .counter {
+.buglist-container.loading:not(.lazy) .buglist-header .counter,
+.buglist-container.loading:not(.lazy) .buglist-header .counter-guidelines {
     display: none;
 }
 
 .buglist-header .counter {
     color: #008080;
+}
+
+.buglist-header .counter-guidelines {
+    margin-left: 8px;
+    font-size: 13px;
+    color: #666;
 }
 
 .buglist-header .actions {
