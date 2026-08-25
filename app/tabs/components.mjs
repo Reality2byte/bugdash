@@ -18,11 +18,7 @@ const onSelectedChanged = debounce(() => {
     // disabled tabs
     for (const $tab of __("#components-tab-group .tab")) {
         if ($tab.dataset.tab !== "components") {
-            if (selected.length === 0) {
-                $tab.classList.add("disabled");
-            } else {
-                $tab.classList.remove("disabled");
-            }
+            $tab.classList.toggle("disabled", selected.length === 0);
         }
     }
 
@@ -47,11 +43,10 @@ const onSelectedChanged = debounce(() => {
     // "selected only" checkbox
     if (!_("#filter-selected").checked) {
         _("#filter-selected").disabled = selected.length === 0;
-        if (selected.length === 0) {
-            _("label[for=filter-selected]").classList.add("disabled");
-        } else {
-            _("label[for=filter-selected]").classList.remove("disabled");
-        }
+        _("label[for=filter-selected]").classList.toggle(
+            "disabled",
+            selected.length === 0,
+        );
     }
 
     saveToURL();
@@ -93,19 +88,12 @@ function applyFilter() {
     let matches = 0;
     const field = getFilterScope();
     for (const c of Global.allComponents()) {
-        if (queryWords.every((w) => c[field].toLowerCase().includes(w))) {
-            _(`#c${c.id}-row`).classList.remove("hidden");
-            matches++;
-        } else {
-            _(`#c${c.id}-row`).classList.add("hidden");
-        }
+        const hasMatch = queryWords.every((w) => c[field].toLowerCase().includes(w));
+        _(`#c${c.id}-row`).classList.toggle("hidden", !hasMatch);
+        if (hasMatch) matches++;
     }
 
-    if (matches === 0) {
-        _("#tab-components").classList.add("no-matching-components");
-    } else {
-        _("#tab-components").classList.remove("no-matching-components");
-    }
+    _("#tab-components").classList.toggle("no-matching-components", matches === 0);
 
     onSelectedChanged();
 }
@@ -161,12 +149,7 @@ export async function initUI() {
                 $filter.disabled = true;
             }
             for (const $cb of __("#components input")) {
-                const $tr = $cb.closest("tr");
-                if ($cb.checked) {
-                    $tr.classList.remove("hidden");
-                } else {
-                    $tr.classList.add("hidden");
-                }
+                $cb.closest("tr").classList.toggle("hidden", !$cb.checked);
             }
             g.lastQuery = undefined;
         } else {
@@ -186,11 +169,7 @@ export async function initUI() {
     onSelectedChanged();
 
     document.addEventListener("tab.changed", (evt) => {
-        if (evt.detail.tab === "components") {
-            _("#tabs-content").classList.add("hidden");
-        } else {
-            _("#tabs-content").classList.remove("hidden");
-        }
+        _("#tabs-content").classList.toggle("hidden", evt.detail.tab === "components");
     });
 
     document.addEventListener("tab.components", () => {

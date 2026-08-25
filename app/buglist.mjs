@@ -83,11 +83,7 @@ export function initUI() {
                 .closest(".buglist-group")
                 .querySelectorAll(".buglist-container")) {
                 if ($container.classList.contains("no-bugs")) continue;
-                if (collapse) {
-                    $container.classList.add("closed");
-                } else {
-                    $container.classList.remove("closed");
-                }
+                $container.classList.toggle("closed", collapse);
             }
             event.preventDefault();
         }

@@ -91,11 +91,7 @@ function onFilterChange($e, updateFiltered = true) {
     const $filter = $e.closest(".filter");
     const $cb = _($filter, "input[type=checkbox]");
 
-    if ($cb.checked) {
-        $filter.classList.remove("disabled");
-    } else {
-        $filter.classList.add("disabled");
-    }
+    $filter.classList.toggle("disabled", !$cb.checked);
     for (const $el of __($filter, "input[type=radio], multi-select")) {
         $el.disabled = !$cb.checked;
     }
@@ -314,11 +310,7 @@ function applyFiltersToBuglist($buglist) {
         }
 
         // apply visibility
-        if (visible[bug.id]) {
-            $tr.classList.remove("hidden");
-        } else {
-            $tr.classList.add("hidden");
-        }
+        $tr.classList.toggle("hidden", !visible[bug.id]);
     }
 
     // handle when all bugs are filtered out
