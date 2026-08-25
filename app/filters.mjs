@@ -13,6 +13,9 @@ const g = {
 export function initUI() {
     // toggle filters
     _("#buglist-filter-button").addEventListener("click", () => {
+        if (document.body.classList.contains("hide-filters")) {
+            return;
+        }
         document.body.classList.toggle("show-filters");
         saveToHash();
         setFiltersVisible();
@@ -65,9 +68,14 @@ export function initUI() {
 }
 
 function setFiltersVisible() {
+    // filters are unavailable on tabs that have opt-ed out (eg. 'components')
+    document.body.classList.toggle(
+        "hide-filters",
+        Boolean(Tabs.activeTab().dataset.noFilter),
+    );
+
     // hide filters panel when disabled
     if (!document.body.classList.contains("show-filters")) {
-        _("#buglist-filters").classList.add("hidden");
         for (const $buglist of __("#tabs-content .buglist-container")) {
             $buglist.classList.remove("filtered");
             for (const $tr of __($buglist, ".bug-row")) {
@@ -75,15 +83,6 @@ function setFiltersVisible() {
             }
             BugList.updateBuglistButtonState($buglist);
         }
-        return;
-    }
-
-    // show filters panel, except on tabs that have opt-ed out (eg. 'components')
-    const $tab = Tabs.activeTab();
-    if ($tab.dataset.noFilter) {
-        _("#buglist-filters").classList.add("hidden");
-    } else {
-        _("#buglist-filters").classList.remove("hidden");
     }
 }
 

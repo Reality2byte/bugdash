@@ -1,5 +1,15 @@
-body.show-filters #buglist-filter-button {
+body:not(.show-filters) #buglist-filters,
+body.hide-filters #buglist-filters {
+    display: none;
+}
+
+body.show-filters:not(.hide-filters) #buglist-filter-button {
     color: #008080;
+}
+
+body.hide-filters #buglist-filter-button {
+    color: #656565;
+    cursor: default;
 }
 
 #buglist-filters {
