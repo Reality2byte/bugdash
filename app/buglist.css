@@ -225,11 +225,12 @@ body.show-filters .buglist-container:not(.closed).all-filtered .buglist-empty {
     color: #9248c8;
 }
 
-.buglist tr.odd {
+.buglist tr {
     background: #fff;
 }
 
-.buglist tr.even {
+.buglist tr:nth-child(4n of :not(.hidden)),
+.buglist tr:nth-child(4n - 1 of :not(.hidden)) {
     background: #eee;
 }
 

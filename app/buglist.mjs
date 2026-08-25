@@ -704,7 +704,6 @@ export async function refresh(id) {
     if (bugs.length > 0) {
         // add to dom
         const $template = _("#bug-row-template");
-        let i = 0;
         for (const bug of bugs) {
             // build keywords html
             bug.keywords_html = bug.keywords
@@ -719,13 +718,11 @@ export async function refresh(id) {
             _($row, ".timestamp").append($timestamp);
             // bug-row attributes
             for (const $tr of __($row, "tr")) {
-                $tr.classList.add(i % 2 === 0 ? "odd" : "even");
                 $tr.bug = bug;
                 if (bug.stalled) {
                     $tr.classList.add("stalled-bug");
                 }
             }
-            i++;
             $list.append($row);
         }
     } else {
