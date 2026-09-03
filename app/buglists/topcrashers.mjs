@@ -17,7 +17,6 @@ export function init($container) {
             o1: "substring",
             v1: "topcrash",
         },
-        usesComponents: true,
         augment: (bug) => {
             bug.timestamp_ago = bug.updated_ago;
             bug.timestamp = bug.updated;

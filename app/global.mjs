@@ -8,7 +8,8 @@ const g = {
     appVersion: 1, // bump to force component reloading
     components: undefined,
     account: undefined,
-    products: [
+    // products that follow the Firefox bug triage process
+    triageProducts: [
         "Core",
         "Developer Infrastructure",
         "DevTools",
@@ -29,6 +30,8 @@ const g = {
         "Web Compatibility",
         "WebExtensions",
     ],
+    // products to EXCLUDE from the release-related lists
+    releaseProducts: ["Developer Infrastructure", "Testing"],
 };
 
 export function allComponents() {
@@ -53,6 +56,14 @@ export function selectedComponents() {
     return result;
 }
 
+export function includedTriageProducts() {
+    return g.triageProducts;
+}
+
+export function excludedReleaseProducts() {
+    return g.releaseProducts;
+}
+
 export function getAccount() {
     return g.account;
 }
@@ -64,7 +75,7 @@ export function setAccount(account) {
 async function loadComponents() {
     // reload components once per month, or if the list of products or appVersion changes
     const now = new Date();
-    const productsHash = hashCode(g.products.join("#") + g.appVersion.toString());
+    const productsHash = hashCode(g.triageProducts.join("#") + g.appVersion.toString());
     const currentCacheID = `${now.getFullYear()}.${now.getMonth()}:${productsHash}`;
     const cacheID = window.localStorage.getItem("componentsID") || "";
     const cacheData = window.localStorage.getItem("components");
@@ -79,7 +90,7 @@ async function loadComponents() {
 
     g.components = [];
     const invalidProducts = [];
-    for (const product of g.products) {
+    for (const product of g.triageProducts) {
         setLoadingStage(`Bugzilla product: ${product}`);
         try {
             const response = await Bugzilla.rest(

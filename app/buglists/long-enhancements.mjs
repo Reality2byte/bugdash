@@ -30,6 +30,5 @@ export function init($container) {
             o3: "equals",
             v3: "enhancement",
         },
-        usesComponents: true,
     });
 }

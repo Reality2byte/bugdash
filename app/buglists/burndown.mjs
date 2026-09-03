@@ -15,8 +15,6 @@ export function init($container) {
                 "\u00A0\u00A0- crash regression leak topcrash assertion dataloss keywords\n" +
                 "\u00A0\u00A0- in a security group\n" +
                 `\u00A0\u00A0- tracking-firefox${chan.version} is + ? or blocking\n` +
-                "Bugs with any of the following are ignored:\n" +
-                "- within the Testing product\n" +
                 "Bugs are order by creation date, oldest first.",
             query: {
                 classification: [
@@ -42,9 +40,6 @@ export function init($container) {
                 o6: "anywordssubstr",
                 v6: "+ ? blocking",
                 f7: "CP",
-                f9: "product",
-                o9: "notequals",
-                v9: "Testing",
             },
         });
     }

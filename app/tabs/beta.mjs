@@ -6,5 +6,5 @@ export function initUI() {
     const $content = _("#beta-content");
 
     const $group = BugList.newGroup($content);
-    Beta.init($group, false);
+    Beta.init($group);
 }

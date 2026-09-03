@@ -58,16 +58,16 @@ async function updateOpenDefects() {
     const queries = {};
     for (const severity of ["s1", "s2", "s3", "s4", "--"]) {
         const name = severity === "--" ? "su" : severity;
-        queries[name] = Bugzilla.queryURL(
-            {
+        queries[name] = Bugzilla.queryURL({
+            query: {
                 resolution: "---",
                 type: "defect",
                 severity: severity,
                 count_only: "1",
             },
-            Global.selectedComponents(),
-            "id",
-        );
+            includeComponents: Global.selectedComponents(),
+            includeFields: "id",
+        });
     }
 
     await BugTable.updateWrapper(
@@ -86,13 +86,13 @@ async function updateOpenDefects() {
                 vars.sa += vars[name];
             }
             vars.saurl = Bugzilla.queryUrlToBuglistUrl(
-                Bugzilla.queryURL(
-                    {
+                Bugzilla.queryURL({
+                    query: {
                         resolution: "---",
                         type: "defect",
                     },
-                    Global.selectedComponents(),
-                ),
+                    includeComponents: Global.selectedComponents(),
+                }),
             );
             return vars;
         },
@@ -114,11 +114,11 @@ async function updateTrendsDefects() {
             o1: "changedafter",
             v1: `-${weeks}w`,
         };
-        queries[`w${weeks}_opened`] = Bugzilla.queryURL(
-            query,
-            Global.selectedComponents(),
-            "id,severity",
-        );
+        queries[`w${weeks}_opened`] = Bugzilla.queryURL({
+            query: query,
+            includeComponents: Global.selectedComponents(),
+            includeFields: "id,severity",
+        });
 
         query = {
             type: "defect",
@@ -131,11 +131,11 @@ async function updateTrendsDefects() {
             query.o2 = "changedafter";
             query.v2 = `-${g.closedBugFilter}`;
         }
-        queries[`w${weeks}_closed`] = Bugzilla.queryURL(
-            query,
-            Global.selectedComponents(),
-            "id,severity",
-        );
+        queries[`w${weeks}_closed`] = Bugzilla.queryURL({
+            query: query,
+            includeComponents: Global.selectedComponents(),
+            includeFields: "id,severity",
+        });
     }
 
     await BugTable.updateWrapper(
@@ -228,7 +228,11 @@ async function updateBurnDown() {
             query.o1 = "changedafter";
             query.v1 = `-${g.closedBugFilter}`;
         }
-        queries[name] = Bugzilla.queryURL(query, Global.selectedComponents(), "id");
+        queries[name] = Bugzilla.queryURL({
+            query: query,
+            includeComponents: Global.selectedComponents(),
+            includeFields: "id",
+        });
     }
 
     const $trendsDefects = _("#trendsDefects");

@@ -1,8 +1,25 @@
+import * as Global from "global";
 import { _, cloneTemplate, updateTemplate } from "util";
 
 /* eslint-disable camelcase */
 
 export function initUI() {
+    const $productTemplate = _("#help-product-template");
+
+    const $triageList = _("#help-triage-products");
+    for (const product of Global.includedTriageProducts()) {
+        const $fragment = cloneTemplate($productTemplate);
+        updateTemplate($fragment, { product: product });
+        $triageList.append($fragment);
+    }
+
+    const $releaseList = _("#help-release-products");
+    for (const product of Global.excludedReleaseProducts()) {
+        const $fragment = cloneTemplate($productTemplate);
+        updateTemplate($fragment, { product: product });
+        $releaseList.append($fragment);
+    }
+
     const header_values = {
         title: "Example Bug List",
         description: "A description of the parameters of the bug list",

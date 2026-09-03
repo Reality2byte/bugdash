@@ -19,7 +19,7 @@ export function initUI() {
     Security.init($group);
 
     $group = BugList.newGroup($content);
-    Tracked.init($group, true);
+    Tracked.init($group);
 
     $group = BugList.newGroup($content);
     Regressions.init($group);

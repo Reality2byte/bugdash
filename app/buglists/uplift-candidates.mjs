@@ -1,5 +1,6 @@
 import * as BugList from "buglist";
 import * as Bugzilla from "bugzilla";
+import * as Global from "global";
 import * as Releases from "releases";
 
 const FLOOR_VERSION = 5;
@@ -46,7 +47,10 @@ export function init($container) {
                         ),
                         [`f${count + 3}`]: "CP",
                     };
-                    return Bugzilla.queryURL(query);
+                    return Bugzilla.queryURL({
+                        query: query,
+                        excludeProducts: Global.excludedReleaseProducts(),
+                    });
                 });
             },
         });

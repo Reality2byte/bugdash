@@ -22,6 +22,9 @@ function addTab(tab, $tabGroup) {
         inner: `${tab.name}-content`,
     });
     _("#tabs-content").append($content);
+    if (tab.components) {
+        _(`#tab-${tab.name}`).dataset.components = tab.components;
+    }
 
     document.addEventListener(`tab.${tab.name}`, () => {
         const $container = _(`#tab-${tab.name}`);
@@ -55,14 +58,17 @@ function addTabs() {
     addComponentsTab({
         name: "triage",
         title: "Triage",
+        components: "triage",
     });
     addComponentsTab({
         name: "important",
         title: "Important",
+        components: "triage",
     });
     addComponentsTab({
         name: "stalled",
         title: "Stalled & Longstanding",
+        components: "triage",
     });
     addComponentsTab({
         name: "overview",
@@ -73,14 +79,17 @@ function addTabs() {
         {
             name: "reo",
             title: "Regressions",
+            components: "release",
         },
         {
             name: "tracked",
             title: "Tracked",
+            components: "release",
         },
         {
             name: "beta",
             title: "Beta",
+            components: "release",
         },
     ]);
 }

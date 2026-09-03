@@ -30,7 +30,6 @@ export function init($container) {
             o5: "equals",
             v5: "defect",
         },
-        usesComponents: true,
         augment: (bug) => {
             bug.timestamp_ago = bug.updated_ago;
             bug.timestamp = bug.updated;

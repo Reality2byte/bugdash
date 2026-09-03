@@ -24,7 +24,6 @@ export function init($container) {
             o1: "substring",
             v1: "needinfo",
         },
-        usesComponents: true,
         partialFields: ["flags"],
         earlyFilter: true,
         include: (bug) => escalationNeedinfo(bug) !== undefined,

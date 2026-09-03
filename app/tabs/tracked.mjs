@@ -8,7 +8,7 @@ export function initUI() {
     const $content = _("#tracked-content");
 
     let $group = BugList.newGroup($content);
-    Tracked.init($group, false);
+    Tracked.init($group);
 
     $group = BugList.newGroup($content);
     UpliftCandidates.init($group);

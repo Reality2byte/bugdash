@@ -42,6 +42,5 @@ export function init($container) {
             o6: "notsubstring",
             v6: "needinfo",
         },
-        usesComponents: true,
     });
 }

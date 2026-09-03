@@ -1,10 +1,11 @@
 import * as BugList from "buglist";
 import * as Releases from "releases";
 
-export function init($container, usesComponents) {
+export function init($container) {
+    const componentsType = $container.closest(".content").dataset.components;
     for (const chan of Releases.channels()) {
         BugList.append({
-            id: `tracked-${chan.name}-${usesComponents}`,
+            id: `tracked-${chan.name}-${componentsType}`,
             $container: $container,
             title: `${chan.version} (${chan.title}) Tracked Bugs`,
             description:
@@ -23,7 +24,6 @@ export function init($container, usesComponents) {
                 o1: "equals",
                 v1: "+",
             },
-            usesComponents: usesComponents,
         });
     }
 }

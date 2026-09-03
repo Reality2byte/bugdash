@@ -22,7 +22,6 @@ export function init($container) {
             o2: "notsubstring",
             v2: "stalled",
         },
-        usesComponents: true,
         partialFields: ["flags"],
         earlyFilter: true,
         include: (bug) => {

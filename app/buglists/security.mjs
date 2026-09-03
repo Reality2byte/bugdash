@@ -30,7 +30,6 @@ export function init($container) {
             o1: "isnotempty",
             v1: "",
         },
-        usesComponents: true,
         lazyLoad: true,
         partialFields: ["keywords", "groups"],
         earlyFilter: true,

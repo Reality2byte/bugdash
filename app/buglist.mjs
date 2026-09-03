@@ -93,7 +93,7 @@ export function initUI() {
     document.addEventListener("refresh", () => {
         const componentsSelected = Global.selectedComponents().length > 0;
         for (const id of Object.keys(g.buglists)) {
-            if (g.buglists[id].usesComponents && !componentsSelected) {
+            if (g.buglists[id].componentsType === "triage" && !componentsSelected) {
                 continue;
             }
             if (g.buglists[id].initialised) {
@@ -176,42 +176,53 @@ export function newGroup($container) {
 export function append({
     // {string} unique id, used as the container's dom id
     id,
+
     // {Element} parent element to append the list's dom to
     $container,
+
     // {string} heading shown in the list's header
     title,
+
     // {string} explanatory text shown in the list's header
     description,
+
     // {object} bugzilla search query used to build the default request url
     query,
+
     // {(bug) => boolean|Promise<boolean>} per-bug filter, run on full records;
     // return falsy to exclude a bug
     include,
+
     // {boolean} if true, also run `include` during overflow ranking, against
     // partial records, before full records are fetched
     earlyFilter,
+
     // {string} timestamp cell template name to use (defaults to "creation")
     template,
+
     // {(bug) => void} per-bug function to add/derive extra template fields,
     // run after the built-in ones
     augment,
+
     // {(a, b) => number} default sort comparator, used until the user picks
     // another order from the list's menu
     order,
+
     // {string[]} extra bug fields that `include`/`order` need from a partial
     // (pre-truncation) record, beyond the fields fetched by default
     partialFields,
-    // {boolean} if true, scope the query to the selected components, and skip
-    // refresh when none are selected
-    usesComponents,
+
     // {boolean} if true, don't fetch until the list is expanded
     lazyLoad,
+
     // {number} max bugs to fetch/display before truncating (defaults to 2000)
     limit,
+
     // {string} text shown behind a "guidelines" link next to the counter
     counterGuidelines,
+
     // {(buglist) => string[]} builds the list of request urls to fetch
-    // (defaults to a single query url built from `query`)
+    // (defaults to a single query url built from `query` using selected or triage components)
     urlsBuilder,
 } = {}) {
     const $root = cloneTemplate(_("#buglist-template")).querySelector(
@@ -223,8 +234,17 @@ export function append({
         description = `${description.trim()}\n\nThis list can be expensive to generate and will only load when expanded.`;
     }
     updateTemplate($root, { title: title, description: description });
-
     $container.append($root);
+
+    // determine component selection from the parent tab
+    const componentsType = $root.closest(".content").dataset.components;
+    if (
+        !componentsType ||
+        !(componentsType === "triage" || componentsType === "release")
+    ) {
+        throw `bad or missing components type for list ${id}`;
+    }
+
     g.buglists[id] = {
         id: id,
         $root: $root,
@@ -236,14 +256,17 @@ export function append({
         order: "default",
         orderFn: order,
         partialFields: partialFields || [],
-        usesComponents: usesComponents,
         lazyLoad: lazyLoad,
         limit: limit,
         urls: [],
         initialised: false,
         counterGuidelines: counterGuidelines,
-        urlsBuilder: urlsBuilder || _defaultUrlsBuilder,
+        componentsType: componentsType,
+        urlsBuilder:
+            urlsBuilder ||
+            (componentsType === "triage" ? _triageUrlsBuilder : _releaseUrlsBuilder),
     };
+
     if (lazyLoad) {
         $root.classList.add("lazy");
         $root.classList.add("lazy-unloaded");
@@ -259,12 +282,21 @@ export function updateQuery(id) {
     }
 }
 
-function _defaultUrlsBuilder(buglist) {
+function _triageUrlsBuilder(buglist) {
     return [
-        Bugzilla.queryURL(
-            buglist.query,
-            buglist.usesComponents ? Global.selectedComponents() : undefined,
-        ),
+        Bugzilla.queryURL({
+            query: buglist.query,
+            includeComponents: Global.selectedComponents(),
+        }),
+    ];
+}
+
+function _releaseUrlsBuilder(buglist) {
+    return [
+        Bugzilla.queryURL({
+            query: buglist.query,
+            excludeProducts: Global.excludedReleaseProducts(),
+        }),
     ];
 }
 

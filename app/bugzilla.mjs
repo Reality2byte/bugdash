@@ -19,7 +19,12 @@ const DEFAULT_INCLUDE_FIELDS = [
     "type",
 ];
 
-export function queryURL(query, components, includeFields) {
+export function queryURL({
+    query,
+    includeComponents,
+    includeFields,
+    excludeProducts,
+} = {}) {
     const search = new URLSearchParams();
     query.query_format = "advanced";
 
@@ -50,12 +55,11 @@ export function queryURL(query, components, includeFields) {
     // hits on matching products OR components, rather than a product/component pair.
     // Instead we build a query which does:
     // .. ((product AND component) OR (product AND component) ...)
-    fieldNumber++;
-    search.append(`f${fieldNumber}`, "OP");
-    search.append(`j${fieldNumber}`, "OR");
-
-    if (components) {
-        for (const c of components) {
+    if (includeComponents && includeComponents.length > 0) {
+        fieldNumber++;
+        search.append(`f${fieldNumber}`, "OP");
+        search.append(`j${fieldNumber}`, "OR");
+        for (const c of includeComponents) {
             fieldNumber++;
             search.append(`f${fieldNumber}`, "OP");
 
@@ -72,10 +76,19 @@ export function queryURL(query, components, includeFields) {
             fieldNumber++;
             search.append(`f${fieldNumber}`, "CP");
         }
+        fieldNumber++;
+        search.append(`f${fieldNumber}`, "CP");
     }
 
-    fieldNumber++;
-    search.append(`f${fieldNumber}`, "CP");
+    // Add product exclusions
+    if (excludeProducts && excludeProducts.length > 0) {
+        for (const p of excludeProducts) {
+            fieldNumber++;
+            search.append(`f${fieldNumber}`, "product");
+            search.append(`o${fieldNumber}`, "notequals");
+            search.append(`v${fieldNumber}`, p);
+        }
+    }
 
     search.append("include_fields", includeFields || DEFAULT_INCLUDE_FIELDS.join(","));
     search.append("limit", "0");

@@ -19,7 +19,6 @@ export function init($container, chan) {
             "Bugs with any of the following are ignored:\n" +
             `- tracking-firefox${chan.version} is -\n` +
             "- stalled or intermittent-failure keywords\n" +
-            "- within the Testing product\n" +
             "Bugs are order by creation date, oldest first.",
         query: {
             classification: [
@@ -50,12 +49,9 @@ export function init($container, chan) {
             f8: `cf_tracking_firefox${chan.version}`,
             o8: "notequals",
             v8: "-",
-            f9: "product",
-            o9: "notequals",
-            v9: "Testing",
-            f10: "keywords",
-            o10: "nowordssubstr",
-            v10: "stalled,intermittent-failure",
+            f9: "keywords",
+            o9: "nowordssubstr",
+            v9: "stalled,intermittent-failure",
         },
     });
 
@@ -71,7 +67,6 @@ export function init($container, chan) {
             `- status-firefox${chan.previous} set to any of unaffected ? ---\n` +
             `- tracking-firefox${chan.version} is -\n` +
             "- stalled or intermittent-failure keywords\n" +
-            "- within the Testing product\n" +
             "Bugs are order by unassigned, then by last updated (oldest first)",
         query: {
             classification: [
@@ -103,12 +98,9 @@ export function init($container, chan) {
             f8: `cf_tracking_firefox${chan.version}`,
             o8: "notequals",
             v8: "-",
-            f9: "product",
-            o9: "notequals",
-            v9: "Testing",
-            f10: "keywords",
-            o10: "nowordssubstr",
-            v10: "stalled,intermittent-failure",
+            f9: "keywords",
+            o9: "nowordssubstr",
+            v9: "stalled,intermittent-failure",
         },
         partialFields: ["assigned_to"],
         augment: (bug) => {

@@ -1,7 +1,7 @@
 import * as BugList from "buglist";
 import * as Releases from "releases";
 
-export function init($container, usesComponents) {
+export function init($container) {
     const beta = Releases.channel("beta");
     const release = Releases.channel("release");
 
@@ -27,7 +27,6 @@ export function init($container, usesComponents) {
             o2: "equals",
             v2: "blocking",
         },
-        usesComponents: usesComponents,
     });
 
     BugList.append({
@@ -60,7 +59,6 @@ export function init($container, usesComponents) {
             o3: "notsubstring",
             v3: "intermittent-bug-filer@mozilla.bugs",
         },
-        usesComponents: usesComponents,
         counterGuidelines: "<75 for early beta\n<40 for late beta\n<30 for RC week",
     });
 
@@ -102,7 +100,6 @@ export function init($container, usesComponents) {
             o7: "notsubstring",
             v7: "intermittent-bug-filer@mozilla.bugs",
         },
-        usesComponents: usesComponents,
         counterGuidelines: "<110 for early beta\n<60 for late beta\n<10 for RC week",
     });
 
@@ -141,7 +138,6 @@ export function init($container, usesComponents) {
             v5: "wontfix",
             f6: "CP",
         },
-        usesComponents: usesComponents,
         counterGuidelines: "<18 for early beta\n<10 for late beta\n<3 for RC week",
     });
 
@@ -170,7 +166,6 @@ export function init($container, usesComponents) {
             o2: "anyexact",
             v2: "+,blocking",
         },
-        usesComponents: usesComponents,
     });
 
     BugList.append({
@@ -197,7 +192,6 @@ export function init($container, usesComponents) {
             o2: "anywordssubstr",
             v2: "unaffected, ---",
         },
-        usesComponents: usesComponents,
         counterGuidelines: "<5 for early beta\n<3 for late beta\n<1 for RC week",
     });
 
@@ -220,7 +214,6 @@ export function init($container, usesComponents) {
             " set to -\n" +
             "- stalled keywords\n" +
             "- Resolution set to any DUPLICATE WONTFIX INVALID\n" +
-            "- within the Testing products\n" +
             "Bugs are order by creation date, oldest first.",
         query: {
             resolution: "---",
@@ -247,20 +240,13 @@ export function init($container, usesComponents) {
             f8: "cf_tracking_firefox_beta",
             o8: "notequals",
             v8: "-",
-            f9: "product",
-            o9: "notequals",
-            v9: "Testing",
-            f10: "keywords",
-            o10: "notsubstring",
-            v10: "stalled",
-            f11: "product",
-            o11: "notequals",
-            v11: "Geckoview",
-            f12: "resolution",
-            o12: "nowordssubstr",
-            v12: "DUPLICATE,WONTFIX,INVALID",
+            f9: "keywords",
+            o9: "notsubstring",
+            v9: "stalled",
+            f10: "resolution",
+            o10: "nowordssubstr",
+            v10: "DUPLICATE,WONTFIX,INVALID",
         },
-        usesComponents: usesComponents,
         counterGuidelines: "<5 for early beta\n<3 for late beta\n<1 for RC week",
     });
 
@@ -287,7 +273,6 @@ export function init($container, usesComponents) {
             o2: "notsubstring",
             v2: "stalled",
         },
-        usesComponents: usesComponents,
         counterGuidelines: "<18 for early beta\n<8 for late beta\n<2 for RC week",
     });
 }

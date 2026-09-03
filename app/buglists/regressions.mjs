@@ -49,7 +49,6 @@ export function init($container) {
                 o9: "nowordssubstr",
                 v9: "stalled,intermittent-failure",
             },
-            usesComponents: true,
             augment: (bug) => {
                 bug.timestamp_ago = bug.updated_ago;
                 bug.timestamp = bug.updated;
@@ -109,7 +108,6 @@ export function init($container) {
                 o9: "nowordssubstr",
                 v9: "stalled,intermittent-failure",
             },
-            usesComponents: true,
             augment: (bug) => {
                 bug.timestamp_ago = bug.updated_ago;
                 bug.timestamp = bug.updated;

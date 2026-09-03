@@ -31,6 +31,5 @@ export function init($container) {
             o6: "equals",
             v6: "defect",
         },
-        usesComponents: true,
     });
 }

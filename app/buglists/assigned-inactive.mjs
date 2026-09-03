@@ -28,7 +28,6 @@ export function init($container) {
             o1: "equals",
             v1: "defect",
         },
-        usesComponents: true,
         lazyLoad: true,
         limit: 200, // this list is expensive, use a small limit to avoid hitting http.429
         include: async (bug) => {
