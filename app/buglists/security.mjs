@@ -21,8 +21,9 @@ export function init($container) {
         $container: $container,
         title: "Security Bugs",
         description:
-            "All non-public bugs with a security rating keyword.\n" +
-            "Bugs are order by security level then last updated, oldest first.\n" +
+            "All non-public bugs with a security rating keyword (sec-critical, sec-high, sec-moderate, or sec-low), " +
+            "or no rating yet.\n" +
+            "Bugs are ordered by security level then last updated, oldest first.\n" +
             "Timestamp shows last time bug was updated by anyone.",
         query: {
             resolution: "---",
@@ -34,8 +35,13 @@ export function init($container) {
         partialFields: ["keywords", "groups"],
         earlyFilter: true,
         include: (bug) => {
-            // must be in a *-security group
-            if (!bug.groups.some((g) => g.endsWith("-security"))) return false;
+            // must be non-public due to a security group
+            if (
+                !bug.groups.some(
+                    (g) => g.endsWith("-security") || g.includes("-security-"),
+                )
+            )
+                return false;
             // must have either a SEC_LEVELS keyword, or no security (sec-*) keywords at all
             if (SEC_LEVELS.find((l) => bug.keywords.includes(l))) return true;
             return !bug.keywords.some((k) => k.startsWith("sec-"));
