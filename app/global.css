@@ -111,7 +111,7 @@ select {
     direction: ltr;
 }
 
-body.loading *:not(#loading, #loading *, #dialog-wrapper, #dialog-wrapper *),
+body.loading *:not(#loading, #loading *, #dialog, #dialog *),
 body:not(.loading) #loading {
     display: none;
 }

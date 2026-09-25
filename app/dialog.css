@@ -1,27 +1,19 @@
-#dialog-wrapper {
-    align-items: center;
-    background-color: rgb(49 49 49 / 50%);
-    color: #313131;
-    display: flex;
-    font-size: 10px;
-    height: 100vh;
-    justify-content: center;
-    left: 0;
-    position: fixed;
-    -webkit-tap-highlight-color: transparent;
-    top: 0;
-    width: 100vw;
-}
-
 #dialog {
-    position: relative;
     box-sizing: border-box;
     width: 85vw;
     max-width: 30em;
+    padding: 0;
     overflow: hidden;
+    font-size: 10px;
+    color: #313131;
     background-color: #fff;
+    border: none;
     border-radius: 0.4em;
     box-shadow: 0 0 10px 1px rgb(0 0 0 / 10%);
+}
+
+#dialog::backdrop {
+    background-color: rgb(49 49 49 / 50%);
 }
 
 #dialog-message {
@@ -68,9 +60,13 @@
 .dialog-button {
     flex: 1;
     padding: 15px;
+    font: inherit;
     font-weight: bold;
+    color: inherit;
     text-align: center;
     cursor: pointer;
+    background: none;
+    border: none;
     border-top: 1px solid #ebebeb;
 }
 

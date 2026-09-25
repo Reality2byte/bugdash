@@ -1,88 +1,76 @@
 import { _ } from "util";
 
+const g = {
+    resolve: undefined,
+};
+
+function show(mode, message, closedBy) {
+    const $dialog = _("#dialog");
+    $dialog.classList.remove("dialog-alert", "dialog-prompt", "dialog-spinner");
+    $dialog.classList.add(`dialog-${mode}`);
+    $dialog.closedBy = closedBy;
+    $dialog.returnValue = "";
+    _("#dialog-message").textContent = message;
+    $dialog.showModal();
+}
+
 export function alert(message) {
-    if (window.dialogResolve) {
-        return new Promise((resolve) => resolve(false));
+    if (_("#dialog").open) {
+        return Promise.resolve(false);
     }
-    reset();
 
     return new Promise((resolve) => {
-        window.dialogResolve = resolve;
-        _("#dialog").classList.add("dialog-alert");
-        _("#dialog-message").textContent = message;
-        _("#dialog-wrapper").classList.remove("hidden");
+        g.resolve = resolve;
+        show("alert", message, "closerequest");
     });
 }
 
 export function prompt(message, value, placeholder) {
-    if (window.dialogResolve) {
-        return new Promise((resolve) => resolve(false));
+    if (_("#dialog").open) {
+        return Promise.resolve(false);
     }
-    reset();
 
     return new Promise((resolve) => {
-        window.dialogResolve = resolve;
-        _("#dialog").classList.add("dialog-prompt");
-        _("#dialog-message").textContent = message;
-        if (placeholder) {
-            _("#dialog-input").placeholder = placeholder;
+        g.resolve = resolve;
+        const $input = _("#dialog-input");
+        $input.placeholder = placeholder ?? "";
+        $input.value = value ?? "";
+        show("prompt", message, "closerequest");
+        if (value !== undefined) {
+            $input.select();
         }
-        if (value === undefined) {
-            _("#dialog-input").value = "";
-        } else {
-            _("#dialog-input").value = value;
-            _("#dialog-input").select();
-        }
-        _("#dialog-wrapper").classList.remove("hidden");
-        _("#dialog-input").focus();
     });
 }
 
 export function showSpinner(message) {
-    if (!_("#dialog-wrapper").classList.contains("hidden")) return;
+    if (_("#dialog").open) return;
 
-    _("#dialog").classList.add("dialog-spinner");
-    _("#dialog-message").textContent = message;
-    _("#dialog-wrapper").classList.remove("hidden");
+    show("spinner", message, "none");
 }
 
 export function hideSpinner() {
-    reset();
-}
-
-function reset() {
-    _("#dialog-wrapper").classList.add("hidden");
-    _("#dialog").classList.remove("dialog-alert", "dialog-prompt", "dialog-spinner");
+    const $dialog = _("#dialog");
+    if ($dialog.classList.contains("dialog-spinner")) {
+        $dialog.close();
+    }
 }
 
 export function initUI() {
-    window.dialogResolve = undefined;
+    const $dialog = _("#dialog");
 
-    document.addEventListener("keyup", (event) => {
-        if (_("#dialog-wrapper").classList.contains("hidden")) return;
+    $dialog.addEventListener("close", () => {
+        const resolve = g.resolve;
+        g.resolve = undefined;
+        if (!resolve) return;
 
-        if (event.key === "Escape") {
-            _("#dialog-cancel").click();
-            return;
-        }
-        if (event.key === "Enter") {
-            _("#dialog-ok").click();
-            return;
-        }
-    });
-
-    _("#dialog-cancel").addEventListener("click", () => {
-        _("#dialog-wrapper").classList.add("hidden");
-        window.dialogResolve(false);
-        window.dialogResolve = undefined;
-    });
-    _("#dialog-ok").addEventListener("click", () => {
-        _("#dialog-wrapper").classList.add("hidden");
-        if (_("#dialog").classList.contains("dialog-prompt")) {
-            window.dialogResolve(_("#dialog-input").value);
+        if ($dialog.returnValue !== "ok") {
+            resolve(false);
+        } else if ($dialog.classList.contains("dialog-prompt")) {
+            resolve(_("#dialog-input").value);
         } else {
-            window.dialogResolve(true);
+            resolve(true);
         }
-        window.dialogResolve = undefined;
     });
+
+    _("#dialog-cancel").addEventListener("click", () => $dialog.close());
 }

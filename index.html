@@ -12,7 +12,7 @@
     <link rel="preload" href="assets/FiraGO-SemiBold.woff2" as="font" crossorigin>
     <link rel="preload" href="assets/FiraGO-SemiBoldItalic.woff2" as="font" crossorigin>
     <link rel="preload" href="assets/MaterialSymbolsOutlined.woff" as="font" crossorigin>
-    <link rel="stylesheet" type="text/css" href="app/global.css?82f3d181ef7983f5602240181a205c62">
+    <link rel="stylesheet" type="text/css" href="app/global.css?dca5d2b1dc569bc86932bb30e5cb4b31">
     <link rel="stylesheet" type="text/css" href="app/tabs.css?7c055033bd595a89841cfbcbe65e3edc">
     <link
       rel="stylesheet"
@@ -31,12 +31,12 @@
     >
     <link rel="stylesheet" type="text/css" href="app/buglist.css?fba6c1fafeb346a86e58d36dbebf40c5">
     <link rel="stylesheet" type="text/css" href="app/bugtable.css?5d4ebc21b4656580d6e28319d737ebe3">
-    <link rel="stylesheet" type="text/css" href="app/dialog.css?ac7e56024618ca7d27da454c08c7b17e">
+    <link rel="stylesheet" type="text/css" href="app/dialog.css?e9b71941ed61bc9cfc29afe624af64af">
     <link rel="stylesheet" type="text/css" href="app/filters.css?f00197487126d2c55e291552ceca4c00">
     <link
       rel="stylesheet"
       type="text/css"
-      href="app/multiselect.css?6d99ed18144490d63d527ab2a01d78c3"
+      href="app/multiselect.css?bc6815079ca7257c6e0e7166d1a8ea32"
     >
     <link
       rel="stylesheet"
@@ -76,7 +76,7 @@
         "buglists/uplift-candidates": "./app/buglists/uplift-candidates.mjs?87d093abd9c501b56abcf12e67104bbb",
         "bugtable": "./app/bugtable.mjs?128cb6524e5d0568dcd5f4d646cec2b9",
         "bugzilla": "./app/bugzilla.mjs?7d3e7a6d7b9f534c93eeb272832e0816",
-        "dialog": "./app/dialog.mjs?8c2b0b6af0aa3d362f724856cba39482",
+        "dialog": "./app/dialog.mjs?9ad14d8efce3b1c429d34f42b04b3cb1",
         "filters": "./app/filters.mjs?75e60e60d240628aefdd5a6bf482b3f3",
         "global": "./app/global.mjs?d580bde91c300e02e97301c1b4f3d421",
         "menus": "./app/menus.mjs?5661dda5c36ffbfc94c8708012b16a5f",
@@ -119,16 +119,16 @@
       </div>
     </div>
 
-    <div id="dialog-wrapper" class="hidden">
-      <div id="dialog">
+    <dialog id="dialog">
+      <form method="dialog">
         <div id="dialog-message"></div>
         <input type="text" id="dialog-input">
         <div id="dialog-buttons">
-          <div class="dialog-button" id="dialog-cancel">Cancel</div>
-          <div class="dialog-button" id="dialog-ok">OK</div>
+          <button type="button" class="dialog-button" id="dialog-cancel">Cancel</button>
+          <button value="ok" class="dialog-button" id="dialog-ok">OK</button>
         </div>
-      </div>
-    </div>
+      </form>
+    </dialog>
 
     <div id="order-menu-template" class="hidden">
       <p>Order by</p>
