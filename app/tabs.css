@@ -35,6 +35,10 @@
     display: flex;
 }
 
+.tab-group.selected {
+    background: #444;
+}
+
 #nav .tab-group:not(:first-child) {
     margin-left: 24px;
 }

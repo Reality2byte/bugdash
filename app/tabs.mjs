@@ -39,59 +39,65 @@ function addTab(tab, $tabGroup) {
     return $tab;
 }
 
-function addTabGroup(tabs) {
-    const $tabGroup = document.createElement("div");
-    $tabGroup.classList.add("tab-group");
-    for (const tab of tabs) {
-        addTab(tab, $tabGroup);
+function addTabGroup({ container, requiresComponents, tabs } = {}) {
+    const $container = container ?? document.createElement("div");
+    if (requiresComponents) {
+        $container.dataset.requiresComponents = "1";
     }
-    _("#refresh-all-button").before($tabGroup);
-}
-
-function addComponentsTab(tab) {
-    const $tabGroup = _("#components-tab-group");
-    const $tab = addTab(tab, $tabGroup);
-    $tab.classList.add("disabled");
+    $container.classList.add("tab-group");
+    for (const tab of tabs) {
+        const $tab = addTab(tab, $container);
+        $tab.classList.toggle("disabled", !!requiresComponents);
+    }
+    _("#refresh-all-button").before($container);
 }
 
 function addTabs() {
-    addComponentsTab({
-        name: "triage",
-        title: "Triage",
-        components: "triage",
+    addTabGroup({
+        container: _("#components-tab-group"),
+        requiresComponents: true,
+        tabs: [
+            {
+                name: "triage",
+                title: "Triage",
+                components: "triage",
+            },
+            {
+                name: "important",
+                title: "Important",
+                components: "triage",
+            },
+            {
+                name: "stalled",
+                title: "Stalled & Longstanding",
+                components: "triage",
+            },
+            {
+                name: "overview",
+                title: "Overview",
+                noFilter: true,
+            },
+        ],
     });
-    addComponentsTab({
-        name: "important",
-        title: "Important",
-        components: "triage",
+    addTabGroup({
+        tabs: [
+            {
+                name: "reo",
+                title: "Regressions",
+                components: "release",
+            },
+            {
+                name: "tracked",
+                title: "Tracked",
+                components: "release",
+            },
+            {
+                name: "beta",
+                title: "Beta",
+                components: "release",
+            },
+        ],
     });
-    addComponentsTab({
-        name: "stalled",
-        title: "Stalled & Longstanding",
-        components: "triage",
-    });
-    addComponentsTab({
-        name: "overview",
-        title: "Overview",
-        noFilter: true,
-    });
-    addTabGroup([
-        {
-            name: "reo",
-            title: "Regressions",
-            components: "release",
-        },
-        {
-            name: "tracked",
-            title: "Tracked",
-            components: "release",
-        },
-        {
-            name: "beta",
-            title: "Beta",
-            components: "release",
-        },
-    ]);
 }
 
 function updateAuth() {
@@ -159,7 +165,8 @@ export function initUI() {
 }
 
 export async function switchTo($tab) {
-    if ($tab.closest("#components-tab-group") && $tab.dataset.tab !== "components") {
+    const $tabGroup = $tab.closest(".tab-group");
+    if (requiresComponents($tab) && $tab.dataset.tab !== "components") {
         const components = Global.selectedComponents();
         if (components.length === 0) {
             await Dialog.alert("No components selected.");
@@ -173,10 +180,14 @@ export async function switchTo($tab) {
         }
     }
 
+    for (const $tg of __(".tab-group.selected")) {
+        $tg.classList.remove("selected");
+    }
     for (const $t of __(".tab.selected")) {
         $t.classList.remove("selected");
     }
     $tab.classList.add("selected");
+    $tabGroup.classList.add("selected");
 
     // change visible content
     for (const $content of __(".content.selected")) {
@@ -208,4 +219,8 @@ export async function switchTo($tab) {
 
 export function activeTab() {
     return _(".tab.selected");
+}
+
+export function requiresComponents($tab) {
+    return !!$tab.closest(".tab-group")?.dataset.requiresComponents;
 }

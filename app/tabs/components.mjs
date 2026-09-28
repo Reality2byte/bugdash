@@ -1,5 +1,6 @@
 import * as Dialog from "dialog";
 import * as Global from "global";
+import * as Tabs from "tabs";
 import * as Tooltips from "tooltips";
 import { _, __, debounce } from "util";
 
@@ -11,12 +12,10 @@ const g = {
 const onSelectedChanged = debounce(() => {
     const selected = Global.selectedComponents();
 
-    // counter in tab
-    _("#selected-components-count").textContent =
-        selected.length === 0 ? "" : `(${selected.length})`;
+    setTabTitle(selected.length);
 
     // disabled tabs
-    for (const $tab of __("#components-tab-group .tab")) {
+    for (const $tab of __(".tab-group[data-requires-components] .tab")) {
         if ($tab.dataset.tab !== "components") {
             $tab.classList.toggle("disabled", selected.length === 0);
         }
@@ -170,6 +169,7 @@ export async function initUI() {
 
     document.addEventListener("tab.changed", (evt) => {
         _("#tabs-content").classList.toggle("hidden", evt.detail.tab === "components");
+        saveToURL();
     });
 
     document.addEventListener("tab.components", () => {
@@ -219,28 +219,42 @@ function saveToURL() {
     searchParams.delete("component");
     searchParams.delete("team");
 
-    const selected = Global.selectedComponents();
+    if (Tabs.requiresComponents(Tabs.activeTab())) {
+        const selected = Global.selectedComponents();
 
-    // if all components are in the same team and all of the team's components
-    // are selected - switch to using a team filter
-    const teams = new Set(selected.map((c) => c.team));
-    if (teams.size === 1) {
-        const [team] = teams;
-        const teamComponents = Global.allComponents().filter((c) => c.team === team);
-        if (selected.length === teamComponents.length) {
-            searchParams.append("team", team);
+        setTabTitle(selected.length);
+
+        // if all components are in the same team and all of the team's components
+        // are selected - switch to using a team filter
+        const teams = new Set(selected.map((c) => c.team));
+        if (teams.size === 1) {
+            const [team] = teams;
+            const teamComponents = Global.allComponents().filter(
+                (c) => c.team === team,
+            );
+            if (selected.length === teamComponents.length) {
+                searchParams.append("team", team);
+            }
         }
+
+        // otherwise use individual components
+        if (!searchParams.has("team")) {
+            for (const c of selected) {
+                searchParams.append("component", `${c.product}:${c.component}`);
+            }
+        }
+    } else {
+        setTabTitle(0);
     }
 
-    // otherwise use individual components
-    if (!searchParams.has("team")) {
-        for (const c of selected) {
-            searchParams.append("component", `${c.product}:${c.component}`);
-        }
-    }
     if (url.href.length < 2048) {
         window.history.replaceState(undefined, undefined, url.href);
     }
+}
+
+function setTabTitle(selectedCount) {
+    _("#selected-components-count").textContent =
+        selectedCount === 0 ? "" : `(${selectedCount})`;
 }
 
 function refreshTable() {
